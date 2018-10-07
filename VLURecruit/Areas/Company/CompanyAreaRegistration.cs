@@ -17,7 +17,8 @@ namespace VLURecruit.Areas.Company
             context.MapRoute(
                 "Company_default",
                 "Company/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new string[] { "VLURecruit.Areas.Company.Controllers" }
             );
         }
     }

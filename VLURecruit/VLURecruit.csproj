@@ -194,9 +194,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Company\CompanyAreaRegistration.cs" />
-    <Compile Include="Areas\Company\Controllers\AccountComController.cs" />
-    <Compile Include="Areas\Company\Controllers\HomeComController.cs" />
+    <Compile Include="Areas\Company\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Company\Models\RecruitmentSupport.cs" />
+    <Compile Include="Areas\Staff\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Staff\StaffAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -210,8 +214,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Company\Assets\css\layout.css" />
-    <Content Include="Areas\Company\Assets\js\layout.js" />
     <Content Include="Assets\icon\12.png" />
     <Content Include="Assets\icon\13.png" />
     <Content Include="Assets\icon\14.png" />
@@ -219,10 +221,12 @@
     <Content Include="Assets\icon\16.png" />
     <Content Include="Assets\icon\17.png" />
     <Content Include="Assets\icon\4.png" />
+    <Content Include="Assets\img\ajax-loader.gif" />
     <Content Include="Assets\img\bg-1.jpg" />
     <Content Include="Assets\img\bg-banner1.jpg" />
     <Content Include="Assets\img\favicon.ico" />
     <Content Include="Assets\img\logo-vlu-6.png" />
+    <Content Include="Assets\img\logo.png" />
     <Content Include="Content\allplugins.css" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -230,6 +234,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap1.min.css" />
+    <Content Include="Content\CSS_Admin\admin-custom.css" />
+    <Content Include="Content\CSS_Admin\bootstrap.min.css" />
+    <Content Include="Content\CSS_Admin\font-awesome.min.css" />
+    <Content Include="Content\CSS_Admin\metisMenu.min.css" />
+    <Content Include="Content\CSS_Admin\sb-admin-2.css" />
     <Content Include="Content\flaticon.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-ui.min.css" />
@@ -251,13 +260,17 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Areas\Company\Views\web.config" />
-    <Content Include="Areas\Company\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Company\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Company\Views\HomeCom\Index.cshtml" />
     <Content Include="fonts\Flaticon.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\slick.woff" />
+    <Content Include="header.Master.Default" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Company\Views\web.config" />
+    <Content Include="Areas\Company\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Staff\Views\web.config" />
+    <Content Include="Areas\Staff\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.min.js" />
     <Content Include="Scripts\isotope.pkgd.min.js" />
@@ -279,6 +292,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery.waypoints.min.js" />
+    <Content Include="Scripts\Js_Admin\bootstrap.min.js" />
+    <Content Include="Scripts\Js_Admin\jquery.min.js" />
+    <Content Include="Scripts\Js_Admin\metisMenu.min.js" />
+    <Content Include="Scripts\Js_Admin\sb-admin-2.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\modernizr-2.8.3.min.js" />
@@ -323,10 +340,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutMain.cshtml" />
+    <Content Include="Views\Shared\_LayoutHeader.cshtml" />
+    <Content Include="Views\Shared\_LayoutFooter.cshtml" />
+    <Content Include="Views\Shared\_LayoutBlackHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Company\Models\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Company\Views\Shared\" />
+    <Folder Include="Areas\Staff\Models\" />
+    <Folder Include="Areas\Staff\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

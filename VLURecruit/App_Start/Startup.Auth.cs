@@ -46,9 +46,9 @@ namespace VLURecruit
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "f8c36cef-bbb4-4396-be9e-d27eedd95e46 ",
+                clientSecret: "lQWP77?ayxowsQRUJ688__?");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",

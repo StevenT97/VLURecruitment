@@ -21,7 +21,7 @@ namespace VLURecruit.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("jobee", throwIfV1Schema: false)
         {
         }
 

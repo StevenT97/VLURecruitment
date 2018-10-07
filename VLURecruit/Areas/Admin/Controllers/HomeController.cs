@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace VLURecruit.Areas.Company.Controllers
+namespace VLURecruit.Areas.Admin.Controllers
 {
-    public class HomeComController : Controller
+    [Authorize(Roles ="Admin")]
+    public class HomeController : Controller
     {
-        // GET: Company/Home
+        // GET: Admin/Home
+        [Authorize(Roles ="Admin")]
         public ActionResult Index()
         {
             return View();

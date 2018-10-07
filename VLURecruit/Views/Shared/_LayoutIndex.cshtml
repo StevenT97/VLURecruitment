@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JobHunt - Van Lang University</title>x
+    <title>JobHunt - Van Lang University</title>
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
     <link href="~/Areas/Company/Assets/css/layout.css" rel="stylesheet" />
@@ -48,87 +48,7 @@
     </div>
     <!--Preloader area End-->
     <!--Header area start here-->
-    <header id="sticky">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-4">
-                    <div class="logo-area">
-                        <a class="nor" href="Index"><img src="~/Assets/img/logo-vlu-6.png" style="margin-top: 15px;margin-left: 20px;"/></a>
-                        <a class="stic" href="Index"><img src="~/Assets/img/logo-vlu-6.png" style="margin-top: 15px;margin-left: 20px;"/></a>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-9 col-sm-9 col-8">
-                    <div class="main-menu">
-                        <nav>
-                            <ul>
-                                <li><a class="active" href="index.html">Trang chủ</a></li>
-                                
-                                <li>
-                                    <a href="javascript:void(0)">Công ty</a>
-                                    <ul>
-                                        <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/recruiters.html">Danh sách Công ty</a></li>
-                                        <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/recruiters-details.html">Test - Thông tin Công ty</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Tin Tức</a>
-                                   
-                                </li>
-                                <li>
-                                    <a href="http://webdevproof.com/theme-forest-demo/job/demo1/blog.html">Giới Thiệu</a>
-                                    
-                                </li>
-                                <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/contact.html">Liên Hệ</a></li>
-                                <li class="users"><button type="button" class="sign_up" data-toggle="modal" data-target="#exampleModalCenter"><i class="flaticon-add-user"></i>Đăng Ký</button></li>
-                                <li class="users"><button type="button" class="log_in" data-toggle="modal" data-target="#exampleModalCenter"><i class="flaticon-login"></i>Đăng Nhập</button></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Responsive Menu area-->
-        <div class="mobilemenu">
-            <div class="mobile-menu  hidden-md-up">
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Trang Chủ</a></li>
-                        <li>
-                            <a href="javascript:void(0)">Jobs</a>
-                            <ul>
-                                <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/jobs.html">Jobs</a></li>
-                                <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/jobs-details.html">Jobs Details</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">Recruiters</a>
-                            <ul>
-                                <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/recruiters.html">Recruiters</a></li>
-                                <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/recruiters-details.html">Recruiters Details</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">Candidates</a>
-                            <ul>
-                                <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/candidates.html">Candidates</a></li>
-                                <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/candidates-details.html">Candidates Details</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">Blog</a>
-                            <ul>
-                                <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/blog.html">Blog</a></li>
-                                <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/contact.html">Contact Us</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <!--Responsive Menu area End-->
-    </header>
+    @RenderPage("_LayoutHeader.cshtml");
     <!--Header area end here-->
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
@@ -138,7 +58,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm pd-0">
-                                <ul class="navtab">
+                                @*<ul class="navtab">
                                     <li>
                                         <a class="prev-step active" href="javascript:void(0)">LOGIN</a>
                                     </li>
@@ -226,7 +146,7 @@
                                             <div class="havean"><p>Already have an account? <a class="n-step" href="javascript:void(0)">Login</a></p></div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>
@@ -240,77 +160,7 @@
         @RenderBody()
         <hr />
         <!--Footer area start here-->
-        <footer>
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-12">
-                            <div class="foo-about">
-                                <h3>Who we are</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt enim lectus, in rhoncus mauris maximus id. Donec at porttitor arcu. Fusce a nunc facilisis, lacinia diam non, rhoncus turpis. Sed viverra</p>
-                                @*<a href="#" class="link">READ MORE</a>
-                                <ul class="social_link">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>*@
-                            </div>
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div class="row">
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="foo_link">
-                                        <h3>For Candidates</h3>
-                                        <ul>
-                                            <li><a href="#">All Jobs</a></li>
-                                            <li><a href="#">All Categories</a></li>
-                                            <li><a href="#">Companies</a></li>
-                                            <li><a href="#">My Account</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="foo_link">
-                                        <h3>For Employers</h3>
-                                        <ul>
-                                            <li><a href="#">All Resums</a></li>
-                                            <li><a href="#">All Categories</a></li>
-                                            <li><a href="#">All Jobs</a></li>
-                                            <li><a href="#">My Account</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="foo_link mr-b0">
-                                        <h3>Information</h3>
-                                        <ul>
-                                            <li><a href="#">About Us</a></li>
-                                            <li><a href="#">Terms & Conditions</a></li>
-                                            <li><a href="#">Privacy Policy</a></li>
-                                            <li><a href="#">Contact Us</a></li>
-                                            <li><a href="#">FAQs</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="copyright">
-                                <p>© Copyright - Praca Cerja. All Rights Reserved.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @RenderPage("_LayoutFooter.cshtml");
         <!--Footer area end here-->
     </div>
     

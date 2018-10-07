@@ -6,14 +6,10 @@ using System.Web.Mvc;
 
 namespace VLURecruit.Areas.Company.Controllers
 {
-    public class AccountComController : Controller
+    public class HomeController : Controller
     {
-        // GET: Company/Account
+        // GET: Company/Home
         public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult Login()
         {
             return View();
         }

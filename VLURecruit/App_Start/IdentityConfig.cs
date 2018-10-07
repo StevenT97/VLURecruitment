@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using VLURecruit.Models;
+using System.Net.Mail;
+using System.Net;
 
 namespace VLURecruit
 {
@@ -18,7 +20,40 @@ namespace VLURecruit
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
+            return configSendGridasync(message);
+        }
+
+        private Task configSendGridasync(IdentityMessage message)
+        {
+            var fromEmail = new MailAddress("nhugavip1@gmail.com", "Trading Vanlanguniversity");
+            var toEmail = new MailAddress(message.Destination);
+            var fromEmailPassword = "bimapbiom"; //Replace with actual password
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
+
+            using (var mess = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = message.Subject,
+                Body = message.Body,
+                IsBodyHtml = true
+            })
+                try
+                {
+
+                    smtp.Send(mess);
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                }
             return Task.FromResult(0);
         }
     }
