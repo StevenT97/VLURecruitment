@@ -151,10 +151,15 @@
                             <a href="#"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
                         </li>
                         <li class="divider"></li>
-                        <li>
-                            <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Đăng xuất</a>
-                          
-                        </li>
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("LogOff", "Account", new { area=""},FormMethod.Post, new { id = "logoutForm"}))
+                            {
+                                @Html.AntiForgeryToken()
+                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Đăng xuẩt</a></li>
+                            }
+                        }
+
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>

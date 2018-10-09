@@ -1,0 +1,1352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="jobeeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company_Info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name_Company" Type="nvarchar" MaxLength="50" />
+          <Property Name="Introduce_Company" Type="nvarchar" MaxLength="200" />
+          <Property Name="website_Company" Type="varchar" MaxLength="50" />
+          <Property Name="Logo_Comany" Type="varchar" MaxLength="50" />
+          <Property Name="Field_Company" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created_at" Type="datetime" />
+          <Property Name="Update_at" Type="datetime" />
+          <Property Name="Slug_Company" Type="nvarchar" MaxLength="50" />
+          <Property Name="Is_hot_Company" Type="int" />
+          <Property Name="Id_Status" Type="int" Nullable="false" />
+          <Property Name="Id_Account" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="District_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Recruitments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="Salary" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nums_view" Type="int" />
+          <Property Name="Expire_date" Type="datetime" />
+          <Property Name="Company_id" Type="int" Nullable="false" />
+          <Property Name="Status_id" Type="int" Nullable="false" />
+          <Property Name="Districts_id" Type="int" Nullable="false" />
+          <Property Name="Created_date" Type="datetime" />
+          <Property Name="Updated_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sections">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created_date" Type="datetime" />
+          <Property Name="Updated_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sections_Recruitment">
+          <Key>
+            <PropertyRef Name="Section_id" />
+            <PropertyRef Name="Recruitment_id" />
+          </Key>
+          <Property Name="Section_id" Type="int" Nullable="false" />
+          <Property Name="Recruitment_id" Type="int" Nullable="false" />
+          <Property Name="Content" Type="nchar" MaxLength="10" />
+          <Property Name="Created_date" Type="datetime" />
+          <Property Name="Updated_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Staff_Info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Staff_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Staff_PhoneNumber" Type="nchar" MaxLength="10" />
+          <Property Name="Staff_Create_at" Type="datetime" />
+          <Property Name="Staff_Update_at" Type="datetime" />
+          <Property Name="Status_Id" Type="int" Nullable="false" />
+          <Property Name="Account_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status_Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name_Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status_Recruitment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Student_Info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Student_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Student_Birthday" Type="date" />
+          <Property Name="Student_Gender" Type="bit" />
+          <Property Name="Student_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Student_PhoneNumber" Type="char" MaxLength="10" />
+          <Property Name="Student_Photo" Type="varchar" MaxLength="50" />
+          <Property Name="Student_Create_at" Type="datetime" />
+          <Property Name="Student_Update_at" Type="datetime" />
+          <Property Name="Student_faculty_id" Type="int" />
+          <Property Name="Status_Id" Type="int" Nullable="false" />
+          <Property Name="Account_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Tag" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created_date" Type="datetime" />
+          <Property Name="Updated_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tags_Recruitments">
+          <Key>
+            <PropertyRef Name="Id_Tags" />
+            <PropertyRef Name="Id_Recruitment" />
+          </Key>
+          <Property Name="Id_Tags" Type="int" Nullable="false" />
+          <Property Name="Id_Recruitment" Type="int" Nullable="false" />
+          <Property Name="Craeted_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Times">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created_date" Type="datetime" />
+          <Property Name="Updated_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Times_Recruitment">
+          <Key>
+            <PropertyRef Name="Time_id" />
+            <PropertyRef Name="Recruitment_id" />
+          </Key>
+          <Property Name="Time_id" Type="int" Nullable="false" />
+          <Property Name="Recruitment_id" Type="int" Nullable="false" />
+          <Property Name="Created_date" Type="datetime" />
+          <Property Name="Updated_date" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Company_Info_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company_Info">
+              <PropertyRef Name="Id_Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Info_Status_Account">
+          <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company_Info">
+              <PropertyRef Name="Id_Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recruitments_Company_Info">
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="1" />
+          <End Role="Recruitments" Type="Self.Recruitments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company_Info">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recruitments">
+              <PropertyRef Name="Company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recruitments_Districts">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="1" />
+          <End Role="Recruitments" Type="Self.Recruitments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recruitments">
+              <PropertyRef Name="Districts_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recruitments_Status_Recruitment">
+          <End Role="Status_Recruitment" Type="Self.Status_Recruitment" Multiplicity="1" />
+          <End Role="Recruitments" Type="Self.Recruitments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Recruitment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recruitments">
+              <PropertyRef Name="Status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sections_Recruitment_Recruitments">
+          <End Role="Recruitments" Type="Self.Recruitments" Multiplicity="1" />
+          <End Role="Sections_Recruitment" Type="Self.Sections_Recruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sections_Recruitment">
+              <PropertyRef Name="Recruitment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sections_Recruitment_Sections">
+          <End Role="Sections" Type="Self.Sections" Multiplicity="1" />
+          <End Role="Sections_Recruitment" Type="Self.Sections_Recruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sections_Recruitment">
+              <PropertyRef Name="Section_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Info_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Staff_Info" Type="Self.Staff_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff_Info">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Info_Status_Account">
+          <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
+          <End Role="Staff_Info" Type="Self.Staff_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff_Info">
+              <PropertyRef Name="Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Info_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Student_Info" Type="Self.Student_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student_Info">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Info_Status_Account">
+          <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
+          <End Role="Student_Info" Type="Self.Student_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student_Info">
+              <PropertyRef Name="Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tags_Recruitments_Recruitments">
+          <End Role="Recruitments" Type="Self.Recruitments" Multiplicity="1" />
+          <End Role="Tags_Recruitments" Type="Self.Tags_Recruitments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tags_Recruitments">
+              <PropertyRef Name="Id_Recruitment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tags_Recruitments_Tags">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="Tags_Recruitments" Type="Self.Tags_Recruitments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tags_Recruitments">
+              <PropertyRef Name="Id_Tags" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Times_Recruitment_Recruitments">
+          <End Role="Recruitments" Type="Self.Recruitments" Multiplicity="1" />
+          <End Role="Times_Recruitment" Type="Self.Times_Recruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Times_Recruitment">
+              <PropertyRef Name="Recruitment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Times_Recruitment_Times">
+          <End Role="Times" Type="Self.Times" Multiplicity="1" />
+          <End Role="Times_Recruitment" Type="Self.Times_Recruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Times">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Times_Recruitment">
+              <PropertyRef Name="Time_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="jobeeModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company_Info" EntityType="Self.Company_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recruitments" EntityType="Self.Recruitments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sections" EntityType="Self.Sections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sections_Recruitment" EntityType="Self.Sections_Recruitment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff_Info" EntityType="Self.Staff_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status_Account" EntityType="Self.Status_Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status_Recruitment" EntityType="Self.Status_Recruitment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student_Info" EntityType="Self.Student_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags_Recruitments" EntityType="Self.Tags_Recruitments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Times" EntityType="Self.Times" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Times_Recruitment" EntityType="Self.Times_Recruitment" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Company_Info_AspNetUsers" Association="Self.FK_Company_Info_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Company_Info" EntitySet="Company_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Info_Status_Account" Association="Self.FK_Company_Info_Status_Account">
+            <End Role="Status_Account" EntitySet="Status_Account" />
+            <End Role="Company_Info" EntitySet="Company_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recruitments_Company_Info" Association="Self.FK_Recruitments_Company_Info">
+            <End Role="Company_Info" EntitySet="Company_Info" />
+            <End Role="Recruitments" EntitySet="Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recruitments_Districts" Association="Self.FK_Recruitments_Districts">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Recruitments" EntitySet="Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recruitments_Status_Recruitment" Association="Self.FK_Recruitments_Status_Recruitment">
+            <End Role="Status_Recruitment" EntitySet="Status_Recruitment" />
+            <End Role="Recruitments" EntitySet="Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sections_Recruitment_Recruitments" Association="Self.FK_Sections_Recruitment_Recruitments">
+            <End Role="Recruitments" EntitySet="Recruitments" />
+            <End Role="Sections_Recruitment" EntitySet="Sections_Recruitment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sections_Recruitment_Sections" Association="Self.FK_Sections_Recruitment_Sections">
+            <End Role="Sections" EntitySet="Sections" />
+            <End Role="Sections_Recruitment" EntitySet="Sections_Recruitment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Info_AspNetUsers" Association="Self.FK_Staff_Info_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Staff_Info" EntitySet="Staff_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Info_Status_Account" Association="Self.FK_Staff_Info_Status_Account">
+            <End Role="Status_Account" EntitySet="Status_Account" />
+            <End Role="Staff_Info" EntitySet="Staff_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Info_AspNetUsers" Association="Self.FK_Student_Info_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Student_Info" EntitySet="Student_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Info_Status_Account" Association="Self.FK_Student_Info_Status_Account">
+            <End Role="Status_Account" EntitySet="Status_Account" />
+            <End Role="Student_Info" EntitySet="Student_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tags_Recruitments_Recruitments" Association="Self.FK_Tags_Recruitments_Recruitments">
+            <End Role="Recruitments" EntitySet="Recruitments" />
+            <End Role="Tags_Recruitments" EntitySet="Tags_Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tags_Recruitments_Tags" Association="Self.FK_Tags_Recruitments_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="Tags_Recruitments" EntitySet="Tags_Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Times_Recruitment_Recruitments" Association="Self.FK_Times_Recruitment_Recruitments">
+            <End Role="Recruitments" EntitySet="Recruitments" />
+            <End Role="Times_Recruitment" EntitySet="Times_Recruitment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Times_Recruitment_Times" Association="Self.FK_Times_Recruitment_Times">
+            <End Role="Times" EntitySet="Times" />
+            <End Role="Times_Recruitment" EntitySet="Times_Recruitment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="jobeeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Company_Info" Relationship="Self.FK_Company_Info_AspNetUsers" FromRole="AspNetUsers" ToRole="Company_Info" />
+          <NavigationProperty Name="Staff_Info" Relationship="Self.FK_Staff_Info_AspNetUsers" FromRole="AspNetUsers" ToRole="Staff_Info" />
+          <NavigationProperty Name="Student_Info" Relationship="Self.FK_Student_Info_AspNetUsers" FromRole="AspNetUsers" ToRole="Student_Info" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Company_Info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Introduce_Company" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="website_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Logo_Comany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Field_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created_at" Type="DateTime" Precision="3" />
+          <Property Name="Update_at" Type="DateTime" Precision="3" />
+          <Property Name="Slug_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Is_hot_Company" Type="Int32" />
+          <Property Name="Id_Status" Type="Int32" Nullable="false" />
+          <Property Name="Id_Account" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Company_Info_AspNetUsers" FromRole="Company_Info" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Status_Account" Relationship="Self.FK_Company_Info_Status_Account" FromRole="Company_Info" ToRole="Status_Account" />
+          <NavigationProperty Name="Recruitments" Relationship="Self.FK_Recruitments_Company_Info" FromRole="Company_Info" ToRole="Recruitments" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="District_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Recruitments" Relationship="Self.FK_Recruitments_Districts" FromRole="Districts" ToRole="Recruitments" />
+        </EntityType>
+        <EntityType Name="Recruitment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nums_view" Type="Int32" />
+          <Property Name="Expire_date" Type="DateTime" Precision="3" />
+          <Property Name="Company_id" Type="Int32" Nullable="false" />
+          <Property Name="Status_id" Type="Int32" Nullable="false" />
+          <Property Name="Districts_id" Type="Int32" Nullable="false" />
+          <Property Name="Created_date" Type="DateTime" Precision="3" />
+          <Property Name="Updated_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Company_Info" Relationship="Self.FK_Recruitments_Company_Info" FromRole="Recruitments" ToRole="Company_Info" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Recruitments_Districts" FromRole="Recruitments" ToRole="Districts" />
+          <NavigationProperty Name="Status_Recruitment" Relationship="Self.FK_Recruitments_Status_Recruitment" FromRole="Recruitments" ToRole="Status_Recruitment" />
+          <NavigationProperty Name="Sections_Recruitment" Relationship="Self.FK_Sections_Recruitment_Recruitments" FromRole="Recruitments" ToRole="Sections_Recruitment" />
+          <NavigationProperty Name="Tags_Recruitments" Relationship="Self.FK_Tags_Recruitments_Recruitments" FromRole="Recruitments" ToRole="Tags_Recruitments" />
+          <NavigationProperty Name="Times_Recruitment" Relationship="Self.FK_Times_Recruitment_Recruitments" FromRole="Recruitments" ToRole="Times_Recruitment" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created_date" Type="DateTime" Precision="3" />
+          <Property Name="Updated_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Sections_Recruitment" Relationship="Self.FK_Sections_Recruitment_Sections" FromRole="Sections" ToRole="Sections_Recruitment" />
+        </EntityType>
+        <EntityType Name="Sections_Recruitment">
+          <Key>
+            <PropertyRef Name="Section_id" />
+            <PropertyRef Name="Recruitment_id" />
+          </Key>
+          <Property Name="Section_id" Type="Int32" Nullable="false" />
+          <Property Name="Recruitment_id" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Created_date" Type="DateTime" Precision="3" />
+          <Property Name="Updated_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Recruitment" Relationship="Self.FK_Sections_Recruitment_Recruitments" FromRole="Sections_Recruitment" ToRole="Recruitments" />
+          <NavigationProperty Name="Section" Relationship="Self.FK_Sections_Recruitment_Sections" FromRole="Sections_Recruitment" ToRole="Sections" />
+        </EntityType>
+        <EntityType Name="Staff_Info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Staff_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Staff_PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Staff_Create_at" Type="DateTime" Precision="3" />
+          <Property Name="Staff_Update_at" Type="DateTime" Precision="3" />
+          <Property Name="Status_Id" Type="Int32" Nullable="false" />
+          <Property Name="Account_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Staff_Info_AspNetUsers" FromRole="Staff_Info" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Status_Account" Relationship="Self.FK_Staff_Info_Status_Account" FromRole="Staff_Info" ToRole="Status_Account" />
+        </EntityType>
+        <EntityType Name="Status_Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name_Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Company_Info" Relationship="Self.FK_Company_Info_Status_Account" FromRole="Status_Account" ToRole="Company_Info" />
+          <NavigationProperty Name="Staff_Info" Relationship="Self.FK_Staff_Info_Status_Account" FromRole="Status_Account" ToRole="Staff_Info" />
+          <NavigationProperty Name="Student_Info" Relationship="Self.FK_Student_Info_Status_Account" FromRole="Status_Account" ToRole="Student_Info" />
+        </EntityType>
+        <EntityType Name="Status_Recruitment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Recruitments" Relationship="Self.FK_Recruitments_Status_Recruitment" FromRole="Status_Recruitment" ToRole="Recruitments" />
+        </EntityType>
+        <EntityType Name="Student_Info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Student_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Student_Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Student_Gender" Type="Boolean" />
+          <Property Name="Student_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Student_PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Student_Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Student_Create_at" Type="DateTime" Precision="3" />
+          <Property Name="Student_Update_at" Type="DateTime" Precision="3" />
+          <Property Name="Student_faculty_id" Type="Int32" />
+          <Property Name="Status_Id" Type="Int32" Nullable="false" />
+          <Property Name="Account_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Student_Info_AspNetUsers" FromRole="Student_Info" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Status_Account" Relationship="Self.FK_Student_Info_Status_Account" FromRole="Student_Info" ToRole="Status_Account" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created_date" Type="DateTime" Precision="3" />
+          <Property Name="Updated_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tags_Recruitments" Relationship="Self.FK_Tags_Recruitments_Tags" FromRole="Tags" ToRole="Tags_Recruitments" />
+        </EntityType>
+        <EntityType Name="Tags_Recruitments">
+          <Key>
+            <PropertyRef Name="Id_Tags" />
+            <PropertyRef Name="Id_Recruitment" />
+          </Key>
+          <Property Name="Id_Tags" Type="Int32" Nullable="false" />
+          <Property Name="Id_Recruitment" Type="Int32" Nullable="false" />
+          <Property Name="Craeted_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Recruitment" Relationship="Self.FK_Tags_Recruitments_Recruitments" FromRole="Tags_Recruitments" ToRole="Recruitments" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_Tags_Recruitments_Tags" FromRole="Tags_Recruitments" ToRole="Tags" />
+        </EntityType>
+        <EntityType Name="Time">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created_date" Type="DateTime" Precision="3" />
+          <Property Name="Updated_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Times_Recruitment" Relationship="Self.FK_Times_Recruitment_Times" FromRole="Times" ToRole="Times_Recruitment" />
+        </EntityType>
+        <EntityType Name="Times_Recruitment">
+          <Key>
+            <PropertyRef Name="Time_id" />
+            <PropertyRef Name="Recruitment_id" />
+          </Key>
+          <Property Name="Time_id" Type="Int32" Nullable="false" />
+          <Property Name="Recruitment_id" Type="Int32" Nullable="false" />
+          <Property Name="Created_date" Type="DateTime" Precision="3" />
+          <Property Name="Updated_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Recruitment" Relationship="Self.FK_Times_Recruitment_Recruitments" FromRole="Times_Recruitment" ToRole="Recruitments" />
+          <NavigationProperty Name="Time" Relationship="Self.FK_Times_Recruitment_Times" FromRole="Times_Recruitment" ToRole="Times" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Info_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company_Info">
+              <PropertyRef Name="Id_Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Info_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="Staff_Info" Type="Self.Staff_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff_Info">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Info_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="Student_Info" Type="Self.Student_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student_Info">
+              <PropertyRef Name="Account_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Info_Status_Account">
+          <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company_Info">
+              <PropertyRef Name="Id_Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recruitments_Company_Info">
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="1" />
+          <End Role="Recruitments" Type="Self.Recruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company_Info">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recruitments">
+              <PropertyRef Name="Company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recruitments_Districts">
+          <End Role="Districts" Type="Self.District" Multiplicity="1" />
+          <End Role="Recruitments" Type="Self.Recruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recruitments">
+              <PropertyRef Name="Districts_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recruitments_Status_Recruitment">
+          <End Role="Status_Recruitment" Type="Self.Status_Recruitment" Multiplicity="1" />
+          <End Role="Recruitments" Type="Self.Recruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Recruitment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recruitments">
+              <PropertyRef Name="Status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sections_Recruitment_Recruitments">
+          <End Role="Recruitments" Type="Self.Recruitment" Multiplicity="1" />
+          <End Role="Sections_Recruitment" Type="Self.Sections_Recruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sections_Recruitment">
+              <PropertyRef Name="Recruitment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tags_Recruitments_Recruitments">
+          <End Role="Recruitments" Type="Self.Recruitment" Multiplicity="1" />
+          <End Role="Tags_Recruitments" Type="Self.Tags_Recruitments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tags_Recruitments">
+              <PropertyRef Name="Id_Recruitment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Times_Recruitment_Recruitments">
+          <End Role="Recruitments" Type="Self.Recruitment" Multiplicity="1" />
+          <End Role="Times_Recruitment" Type="Self.Times_Recruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Times_Recruitment">
+              <PropertyRef Name="Recruitment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sections_Recruitment_Sections">
+          <End Role="Sections" Type="Self.Section" Multiplicity="1" />
+          <End Role="Sections_Recruitment" Type="Self.Sections_Recruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sections_Recruitment">
+              <PropertyRef Name="Section_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Info_Status_Account">
+          <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
+          <End Role="Staff_Info" Type="Self.Staff_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff_Info">
+              <PropertyRef Name="Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Info_Status_Account">
+          <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
+          <End Role="Student_Info" Type="Self.Student_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student_Info">
+              <PropertyRef Name="Status_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tags_Recruitments_Tags">
+          <End Role="Tags" Type="Self.Tag" Multiplicity="1" />
+          <End Role="Tags_Recruitments" Type="Self.Tags_Recruitments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tags_Recruitments">
+              <PropertyRef Name="Id_Tags" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Times_Recruitment_Times">
+          <End Role="Times" Type="Self.Time" Multiplicity="1" />
+          <End Role="Times_Recruitment" Type="Self.Times_Recruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Times">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Times_Recruitment">
+              <PropertyRef Name="Time_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="jobeeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Company_Info" EntityType="Self.Company_Info" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Recruitments" EntityType="Self.Recruitment" />
+          <EntitySet Name="Sections" EntityType="Self.Section" />
+          <EntitySet Name="Sections_Recruitment" EntityType="Self.Sections_Recruitment" />
+          <EntitySet Name="Staff_Info" EntityType="Self.Staff_Info" />
+          <EntitySet Name="Status_Account" EntityType="Self.Status_Account" />
+          <EntitySet Name="Status_Recruitment" EntityType="Self.Status_Recruitment" />
+          <EntitySet Name="Student_Info" EntityType="Self.Student_Info" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tags" EntityType="Self.Tag" />
+          <EntitySet Name="Tags_Recruitments" EntityType="Self.Tags_Recruitments" />
+          <EntitySet Name="Times" EntityType="Self.Time" />
+          <EntitySet Name="Times_Recruitment" EntityType="Self.Times_Recruitment" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Info_AspNetUsers" Association="Self.FK_Company_Info_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Company_Info" EntitySet="Company_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Info_AspNetUsers" Association="Self.FK_Staff_Info_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Staff_Info" EntitySet="Staff_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Info_AspNetUsers" Association="Self.FK_Student_Info_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Student_Info" EntitySet="Student_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Info_Status_Account" Association="Self.FK_Company_Info_Status_Account">
+            <End Role="Status_Account" EntitySet="Status_Account" />
+            <End Role="Company_Info" EntitySet="Company_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recruitments_Company_Info" Association="Self.FK_Recruitments_Company_Info">
+            <End Role="Company_Info" EntitySet="Company_Info" />
+            <End Role="Recruitments" EntitySet="Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recruitments_Districts" Association="Self.FK_Recruitments_Districts">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Recruitments" EntitySet="Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recruitments_Status_Recruitment" Association="Self.FK_Recruitments_Status_Recruitment">
+            <End Role="Status_Recruitment" EntitySet="Status_Recruitment" />
+            <End Role="Recruitments" EntitySet="Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sections_Recruitment_Recruitments" Association="Self.FK_Sections_Recruitment_Recruitments">
+            <End Role="Recruitments" EntitySet="Recruitments" />
+            <End Role="Sections_Recruitment" EntitySet="Sections_Recruitment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tags_Recruitments_Recruitments" Association="Self.FK_Tags_Recruitments_Recruitments">
+            <End Role="Recruitments" EntitySet="Recruitments" />
+            <End Role="Tags_Recruitments" EntitySet="Tags_Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Times_Recruitment_Recruitments" Association="Self.FK_Times_Recruitment_Recruitments">
+            <End Role="Recruitments" EntitySet="Recruitments" />
+            <End Role="Times_Recruitment" EntitySet="Times_Recruitment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sections_Recruitment_Sections" Association="Self.FK_Sections_Recruitment_Sections">
+            <End Role="Sections" EntitySet="Sections" />
+            <End Role="Sections_Recruitment" EntitySet="Sections_Recruitment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Info_Status_Account" Association="Self.FK_Staff_Info_Status_Account">
+            <End Role="Status_Account" EntitySet="Status_Account" />
+            <End Role="Staff_Info" EntitySet="Staff_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Info_Status_Account" Association="Self.FK_Student_Info_Status_Account">
+            <End Role="Status_Account" EntitySet="Status_Account" />
+            <End Role="Student_Info" EntitySet="Student_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tags_Recruitments_Tags" Association="Self.FK_Tags_Recruitments_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="Tags_Recruitments" EntitySet="Tags_Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Times_Recruitment_Times" Association="Self.FK_Times_Recruitment_Times">
+            <End Role="Times" EntitySet="Times" />
+            <End Role="Times_Recruitment" EntitySet="Times_Recruitment" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="jobeeModelStoreContainer" CdmEntityContainer="jobeeEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="jobeeModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="jobeeModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="jobeeModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="jobeeModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="jobeeModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company_Info">
+            <EntityTypeMapping TypeName="jobeeModel.Company_Info">
+              <MappingFragment StoreEntitySet="Company_Info">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_Company" ColumnName="Name_Company" />
+                <ScalarProperty Name="Introduce_Company" ColumnName="Introduce_Company" />
+                <ScalarProperty Name="website_Company" ColumnName="website_Company" />
+                <ScalarProperty Name="Logo_Comany" ColumnName="Logo_Comany" />
+                <ScalarProperty Name="Field_Company" ColumnName="Field_Company" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="Update_at" ColumnName="Update_at" />
+                <ScalarProperty Name="Slug_Company" ColumnName="Slug_Company" />
+                <ScalarProperty Name="Is_hot_Company" ColumnName="Is_hot_Company" />
+                <ScalarProperty Name="Id_Status" ColumnName="Id_Status" />
+                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="jobeeModel.District">
+              <MappingFragment StoreEntitySet="Districts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="District_Name" ColumnName="District_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recruitments">
+            <EntityTypeMapping TypeName="jobeeModel.Recruitment">
+              <MappingFragment StoreEntitySet="Recruitments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Nums_view" ColumnName="Nums_view" />
+                <ScalarProperty Name="Expire_date" ColumnName="Expire_date" />
+                <ScalarProperty Name="Company_id" ColumnName="Company_id" />
+                <ScalarProperty Name="Status_id" ColumnName="Status_id" />
+                <ScalarProperty Name="Districts_id" ColumnName="Districts_id" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sections">
+            <EntityTypeMapping TypeName="jobeeModel.Section">
+              <MappingFragment StoreEntitySet="Sections">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sections_Recruitment">
+            <EntityTypeMapping TypeName="jobeeModel.Sections_Recruitment">
+              <MappingFragment StoreEntitySet="Sections_Recruitment">
+                <ScalarProperty Name="Section_id" ColumnName="Section_id" />
+                <ScalarProperty Name="Recruitment_id" ColumnName="Recruitment_id" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff_Info">
+            <EntityTypeMapping TypeName="jobeeModel.Staff_Info">
+              <MappingFragment StoreEntitySet="Staff_Info">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Staff_Name" ColumnName="Staff_Name" />
+                <ScalarProperty Name="Staff_PhoneNumber" ColumnName="Staff_PhoneNumber" />
+                <ScalarProperty Name="Staff_Create_at" ColumnName="Staff_Create_at" />
+                <ScalarProperty Name="Staff_Update_at" ColumnName="Staff_Update_at" />
+                <ScalarProperty Name="Status_Id" ColumnName="Status_Id" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status_Account">
+            <EntityTypeMapping TypeName="jobeeModel.Status_Account">
+              <MappingFragment StoreEntitySet="Status_Account">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_Status" ColumnName="Name_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status_Recruitment">
+            <EntityTypeMapping TypeName="jobeeModel.Status_Recruitment">
+              <MappingFragment StoreEntitySet="Status_Recruitment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status_Name" ColumnName="Status_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_Info">
+            <EntityTypeMapping TypeName="jobeeModel.Student_Info">
+              <MappingFragment StoreEntitySet="Student_Info">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
+                <ScalarProperty Name="Student_Birthday" ColumnName="Student_Birthday" />
+                <ScalarProperty Name="Student_Gender" ColumnName="Student_Gender" />
+                <ScalarProperty Name="Student_Description" ColumnName="Student_Description" />
+                <ScalarProperty Name="Student_PhoneNumber" ColumnName="Student_PhoneNumber" />
+                <ScalarProperty Name="Student_Photo" ColumnName="Student_Photo" />
+                <ScalarProperty Name="Student_Create_at" ColumnName="Student_Create_at" />
+                <ScalarProperty Name="Student_Update_at" ColumnName="Student_Update_at" />
+                <ScalarProperty Name="Student_faculty_id" ColumnName="Student_faculty_id" />
+                <ScalarProperty Name="Status_Id" ColumnName="Status_Id" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="jobeeModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="jobeeModel.Tag">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_Tag" ColumnName="Name_Tag" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags_Recruitments">
+            <EntityTypeMapping TypeName="jobeeModel.Tags_Recruitments">
+              <MappingFragment StoreEntitySet="Tags_Recruitments">
+                <ScalarProperty Name="Id_Tags" ColumnName="Id_Tags" />
+                <ScalarProperty Name="Id_Recruitment" ColumnName="Id_Recruitment" />
+                <ScalarProperty Name="Craeted_date" ColumnName="Craeted_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Times">
+            <EntityTypeMapping TypeName="jobeeModel.Time">
+              <MappingFragment StoreEntitySet="Times">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name_Time" ColumnName="Name_Time" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Times_Recruitment">
+            <EntityTypeMapping TypeName="jobeeModel.Times_Recruitment">
+              <MappingFragment StoreEntitySet="Times_Recruitment">
+                <ScalarProperty Name="Time_id" ColumnName="Time_id" />
+                <ScalarProperty Name="Recruitment_id" ColumnName="Recruitment_id" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="jobeeModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

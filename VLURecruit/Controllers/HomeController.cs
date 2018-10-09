@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VLURecruit.Models;
 
 namespace VLURecruit.Controllers
 {
@@ -10,7 +11,9 @@ namespace VLURecruit.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            jobeeEntities db = new jobeeEntities();
+            var model = db.Recruitments.Where(x => x.Status_id==2).ToList();
+            return View(model);
         }
 
         public ActionResult About()
@@ -26,5 +29,7 @@ namespace VLURecruit.Controllers
 
             return View();
         }
+        
+
     }
 }

@@ -96,14 +96,19 @@ namespace VLURecruit.Controllers
                         return RedirectToAction("Index", "Home", new { area = "Admin" });
                     }
                     //check user role staff
-                    if (await UserManager.IsInRoleAsync(user.Id, "Company"))
+                    else if (await UserManager.IsInRoleAsync(user.Id, "Company"))
                     {
                         return RedirectToAction("Index", "Home", new { area = "Company" });
                     }
                     //check user role staff
-                    if (await UserManager.IsInRoleAsync(user.Id, "Staff"))
+                    else if (await UserManager.IsInRoleAsync(user.Id, "Staff"))
                     {
                         return RedirectToAction("Index", "Home", new { area = "Staff" });
+                    }
+                    //check user role stident
+                    if (await UserManager.IsInRoleAsync(user.Id, "Student"))
+                    {
+                        return RedirectToAction("Index", "Home", new { area = "Student" });
                     }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:

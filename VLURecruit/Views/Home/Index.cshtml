@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<VLURecruit.Models.Recruitment>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
@@ -170,332 +170,35 @@
             <div class="jobs">
                 <div class="jobs_items">
                     <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="~/Assets/icon/12.png" alt=""></figure>
-                                    <span class="color1">Part Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Marketing Manager</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/13.png" alt=""></figure>
-                                    <span class="color2">Full Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Front-End Developer</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="items">
+                                    <div class="right-con">
+                                        <figure><img src="~/Assets/icon/12.png" alt=""></figure>
+                                        @if (item.Times_Recruitment.FirstOrDefault(x=> x.Recruitment_id== item.Id).Time.Name_Time == "Part-Time")
+                                        {
+                                            <span class="color1">Part Time</span>
+                                        }
+                                        @if (item.Times_Recruitment.FirstOrDefault(x=> x.Recruitment_id== item.Id).Time.Name_Time == "Full-Time")
+                                        {
+                                            <span class="color2">Full Time</span>
+                                        }
+                                        
+                                    </div>
+                                    <div class="content">
+                                            <h3><a href="@Url.Action("Detail","Home",new { id=item.Id})">@item.title</a><button><i class="fa fa-heart"></i></button></h3>
+                                            <p>@item.Expire_date.Value.ToString("dd/MM/yyyy")</p>
+                                            <ul>
+                                                <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">@item.Company_Info.Name_Company</span></li>
+                                                <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">@item.Salary VND</span></li>
+                                                <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">@item.District.District_Name</span></li>
+                                            </ul>
+                                        
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/14.png" alt=""></figure>
-                                    <span class="color3">Contract</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Female Teacher</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/15.png" alt=""></figure>
-                                    <span class="color4">Temporary</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Brand Sales Manager</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/16.png" alt=""></figure>
-                                    <span class="color1">Part Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Web Developer – PHP</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/17.png" alt=""></figure>
-                                    <span class="color2">Full Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Cashier For Bank…</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="jobs_items">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/14.png" alt=""></figure>
-                                    <span class="color3">Contract</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Female Teacher</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/15.png" alt=""></figure>
-                                    <span class="color4">Temporary</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Brand Sales Manager</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/12.png" alt=""></figure>
-                                    <span class="color1">Part Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Marketing Manager</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/13.png" alt=""></figure>
-                                    <span class="color2">Full Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Front-End Developer</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/16.png" alt=""></figure>
-                                    <span class="color1">Part Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Web Developer – PHP</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/17.png" alt=""></figure>
-                                    <span class="color2">Full Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Cashier For Bank…</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="jobs_items">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/16.png" alt=""></figure>
-                                    <span class="color1">Part Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Web Developer – PHP</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/17.png" alt=""></figure>
-                                    <span class="color2">Full Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Cashier For Bank…</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/12.png" alt=""></figure>
-                                    <span class="color1">Part Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Marketing Manager</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/13.png" alt=""></figure>
-                                    <span class="color2">Full Time</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Front-End Developer</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/14.png" alt=""></figure>
-                                    <span class="color3">Contract</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Female Teacher</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="items">
-                                <div class="right-con">
-                                    <figure><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/15.png" alt=""></figure>
-                                    <span class="color4">Temporary</span>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">Brand Sales Manager</a><button><i class="fa fa-heart"></i></button></h3>
-                                    <p>April 3, 2018</p>
-                                    <ul>
-                                        <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">Intel Technologies</span></li>
-                                        <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">$ 2500 - $ 3000</span></li>
-                                        <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Intel Technologies</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -1185,4 +888,3 @@
             </div>
         </div>
     </div>*@
-

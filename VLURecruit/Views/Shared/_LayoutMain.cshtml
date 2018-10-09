@@ -4,32 +4,34 @@
 
 <!-- Mirrored from webdevproof.com/theme-forest-demo/job/demo1/jobs-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 30 Sep 2018 06:08:17 GMT -->
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--ViewBag Title-->
     <title>JobHunt - @ViewBag.Title</title>
-    <meta name="description" content="">
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
 
+    @RenderSection("Js", required:false)
+
+    <link href="~/Areas/Company/Assets/css/layout.css" rel="stylesheet" />
+    <!------------------------------------------------------------------->
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="~/Assets/img/favicon.ico">
     <link rel="apple-touch-icon" href="~/Assets/img/favicon.ico">
 
     <!-- All css Here -->
     <!-- All plugins css -->
-    <link rel="stylesheet" href="http://webdevproof.com/theme-forest-demo/job/demo1/assets/css/allplugins.css">
+    <link href="~/Content/allplugins.css" rel="stylesheet" />
     <!-- Style css -->
-    <link rel="stylesheet" href="http://webdevproof.com/theme-forest-demo/job/demo1/assets/style.css">
-    <!-- Responsive css -->
-    <link rel="stylesheet" href="http://webdevproof.com/theme-forest-demo/job/demo1/assets/css/responsive.css">
+    <link href="~/Content/style.css" rel="stylesheet" />
 
-    <!-- Customization css -->
-    <!--If u need any change then use this css file-->
-    <link rel="stylesheet" href="http://webdevproof.com/theme-forest-demo/job/demo1/assets/css/custom.css">
+    <!-- Responsive css -->
+    <link href="~/Content/responsive.css" rel="stylesheet" />
 
     <!-- Modernizr JavaScript -->
-    <script src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,6 +39,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!------------------------------------------------------------------->
 </head>
 <body>
     <!--[if lt IE 8]>
@@ -201,8 +204,8 @@
     <script src="~/Scripts/plugins.js"></script>
     <!-- Init JavaScript -->
     <script src="~/Scripts/main.js"></script>
-    @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
         @RenderSection("scripts", required: false)
 </body>
 
