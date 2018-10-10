@@ -36,5 +36,9 @@ namespace VLURecruit.Areas.Company.Controllers
 
             return View();
         }
+        public ActionResult ListOfRecruitment()
+        {
+            return View();
+        }
     }
 }
