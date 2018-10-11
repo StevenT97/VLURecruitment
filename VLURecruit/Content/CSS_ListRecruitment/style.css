@@ -250,7 +250,7 @@ nav ul li:hover > ul,
 	position: relative;
 }
 
-.overlay:before {
+/*.overlay:before {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -320,11 +320,11 @@ header {
 	color: #ffffff;
 	font-size: 28px;
 	font-weight: 500;
-}
+}*/
 
 /* ========== login_register ========== */
 
-.login_register {
+/*.login_register {
 	float: right;
 	margin-top: 8px;
 	padding-left: 30px;
@@ -593,7 +593,7 @@ nav > ul > li > a:hover {
 
 /* =========== search_form =========== */
 
-.search_form {
+/*.search_form {
 	float: left;
 	width: 100%;
 	padding: 20px;
@@ -628,12 +628,12 @@ nav > ul > li > a:hover {
 	-o-border-radius: 0 3px 3px 0;
 	border-radius: 0 3px 3px 0;
 	cursor: pointer;
-}
+}*/
 
 
 /* ============ us-links ============= */
 
-.us-links {
+/*.us-links {
 	float: left;
 	width: 100%;
 	border-bottom: 1px solid #e5e5e5;
@@ -688,7 +688,7 @@ nav > ul > li > a:hover {
 	-ms-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
-}
+}*/
 
 
 
@@ -703,6 +703,7 @@ main {
 .main-section {
 	float: left;
 	width: 100%;
+    padding-top:7rem;
 }
 .main-section-data {
 	float: left;
