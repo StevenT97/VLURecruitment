@@ -33,8 +33,6 @@ namespace VLURecruit.Models
         public virtual DbSet<Company_Info> Company_Info { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Recruitment> Recruitments { get; set; }
-        public virtual DbSet<Section> Sections { get; set; }
-        public virtual DbSet<Sections_Recruitment> Sections_Recruitment { get; set; }
         public virtual DbSet<Staff_Info> Staff_Info { get; set; }
         public virtual DbSet<Status_Account> Status_Account { get; set; }
         public virtual DbSet<Status_Recruitment> Status_Recruitment { get; set; }
@@ -42,7 +40,5 @@ namespace VLURecruit.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<Tags_Recruitments> Tags_Recruitments { get; set; }
-        public virtual DbSet<Time> Times { get; set; }
-        public virtual DbSet<Times_Recruitment> Times_Recruitment { get; set; }
     }
 }

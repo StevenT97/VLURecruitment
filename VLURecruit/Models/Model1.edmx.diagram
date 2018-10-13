@@ -4,26 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ba7063b67ec64aaca2d7540a01a59588" Name="Diagram1">
-        <EntityTypeShape EntityType="jobeeModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.AspNetRole" Width="1.5" PointX="1.5" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.AspNetUserClaim" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.AspNetUserLogin" Width="1.5" PointX="6" PointY="18.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.AspNetUser" Width="1.5" PointX="3.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Company_Info" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.District" Width="1.5" PointX="6" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Recruitment" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Section" Width="1.5" PointX="8.25" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Sections_Recruitment" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Staff_Info" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Status_Account" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Status_Recruitment" Width="1.5" PointX="6" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Student_Info" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.sysdiagram" Width="1.5" PointX="8.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Tag" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Tags_Recruitments" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Time" Width="1.5" PointX="8.25" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Times_Recruitment" Width="1.5" PointX="10.5" PointY="11.875" IsExpanded="true" />
+      <Diagram DiagramId="e55a165b7f2d4a31a5e50d8009144c1b" Name="Diagram1">
+        <EntityTypeShape EntityType="jobeeModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.AspNetRole" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.AspNetUser" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.Company_Info" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.District" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.Recruitment" Width="1.5" PointX="10.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.Staff_Info" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.Status_Account" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.Status_Recruitment" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.Student_Info" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.Tag" Width="1.5" PointX="10.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobeeModel.Tags_Recruitments" Width="1.5" PointX="12.75" PointY="9.875" IsExpanded="true" />
         <AssociationConnector Association="jobeeModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="jobeeModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="jobeeModel.FK_Company_Info_AspNetUsers" ManuallyRouted="false" />
@@ -33,14 +29,10 @@
         <AssociationConnector Association="jobeeModel.FK_Recruitments_Company_Info" ManuallyRouted="false" />
         <AssociationConnector Association="jobeeModel.FK_Recruitments_Districts" ManuallyRouted="false" />
         <AssociationConnector Association="jobeeModel.FK_Recruitments_Status_Recruitment" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Sections_Recruitment_Recruitments" ManuallyRouted="false" />
         <AssociationConnector Association="jobeeModel.FK_Tags_Recruitments_Recruitments" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Times_Recruitment_Recruitments" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Sections_Recruitment_Sections" ManuallyRouted="false" />
         <AssociationConnector Association="jobeeModel.FK_Staff_Info_Status_Account" ManuallyRouted="false" />
         <AssociationConnector Association="jobeeModel.FK_Student_Info_Status_Account" ManuallyRouted="false" />
         <AssociationConnector Association="jobeeModel.FK_Tags_Recruitments_Tags" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Times_Recruitment_Times" ManuallyRouted="false" />
         <AssociationConnector Association="jobeeModel.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

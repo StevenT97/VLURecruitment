@@ -4696,7 +4696,7 @@ button.close {
  border-style:solid
 }
 .popover {
- position:absolute;
+ position:inherit;
  top:0;
  left:0;
  z-index:1060;

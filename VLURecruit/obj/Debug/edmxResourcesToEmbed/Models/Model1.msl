@@ -90,32 +90,18 @@
           <ScalarProperty Name="Salary" ColumnName="Salary" />
           <ScalarProperty Name="Nums_view" ColumnName="Nums_view" />
           <ScalarProperty Name="Expire_date" ColumnName="Expire_date" />
+          <ScalarProperty Name="Districts_id" ColumnName="Districts_id" />
+          <ScalarProperty Name="Is_Full_Time" ColumnName="Is_Full_Time" />
+          <ScalarProperty Name="Is_Part_Time" ColumnName="Is_Part_Time" />
+          <ScalarProperty Name="Is_Intership" ColumnName="Is_Intership" />
           <ScalarProperty Name="Company_id" ColumnName="Company_id" />
           <ScalarProperty Name="Status_id" ColumnName="Status_id" />
-          <ScalarProperty Name="Districts_id" ColumnName="Districts_id" />
           <ScalarProperty Name="Created_date" ColumnName="Created_date" />
           <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Sections">
-      <EntityTypeMapping TypeName="jobeeModel.Section">
-        <MappingFragment StoreEntitySet="Sections">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Created_date" ColumnName="Created_date" />
-          <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Sections_Recruitment">
-      <EntityTypeMapping TypeName="jobeeModel.Sections_Recruitment">
-        <MappingFragment StoreEntitySet="Sections_Recruitment">
-          <ScalarProperty Name="Section_id" ColumnName="Section_id" />
-          <ScalarProperty Name="Recruitment_id" ColumnName="Recruitment_id" />
-          <ScalarProperty Name="Content" ColumnName="Content" />
-          <ScalarProperty Name="Created_date" ColumnName="Created_date" />
-          <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
+          <ScalarProperty Name="Mo_ta_Chi_Tiet" ColumnName="Mo_ta_Chi_Tiet" />
+          <ScalarProperty Name="Ky_Nang_Cong_Viec" ColumnName="Ky_Nang_Cong_Viec" />
+          <ScalarProperty Name="Phuc_Loi" ColumnName="Phuc_Loi" />
+          <ScalarProperty Name="Tuy_Chon" ColumnName="Tuy_Chon" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -193,26 +179,6 @@
           <ScalarProperty Name="Id_Tags" ColumnName="Id_Tags" />
           <ScalarProperty Name="Id_Recruitment" ColumnName="Id_Recruitment" />
           <ScalarProperty Name="Craeted_date" ColumnName="Craeted_date" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Times">
-      <EntityTypeMapping TypeName="jobeeModel.Time">
-        <MappingFragment StoreEntitySet="Times">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name_Time" ColumnName="Name_Time" />
-          <ScalarProperty Name="Created_date" ColumnName="Created_date" />
-          <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Times_Recruitment">
-      <EntityTypeMapping TypeName="jobeeModel.Times_Recruitment">
-        <MappingFragment StoreEntitySet="Times_Recruitment">
-          <ScalarProperty Name="Time_id" ColumnName="Time_id" />
-          <ScalarProperty Name="Recruitment_id" ColumnName="Recruitment_id" />
-          <ScalarProperty Name="Created_date" ColumnName="Created_date" />
-          <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

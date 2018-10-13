@@ -257,12 +257,7 @@
     <Compile Include="Models\Recruitment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Section.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Sections_Recruitment.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\RecruitmentSuppor.cs" />
     <Compile Include="Models\Staff_Info.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -282,12 +277,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tags_Recruitments.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Time.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Times_Recruitment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -329,6 +318,7 @@
     <Content Include="Content\CSS_ListRecruitment\slick-theme.css" />
     <Content Include="Content\CSS_ListRecruitment\slick.css" />
     <Content Include="Content\CSS_ListRecruitment\style.css" />
+    <Content Include="Content\CSS_Summernote\summernote.css" />
     <Content Include="Content\flaticon.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-ui.min.css" />
@@ -374,13 +364,6 @@
     <Content Include="Areas\Company\Views\Home\Index.cshtml" />
     <Content Include="Areas\Staff\Views\web.config" />
     <Content Include="Areas\Staff\Views\Home\Index.cshtml" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Company\Views\Recruitment\View.cshtml" />
     <Content Include="Areas\Company\Views\Recruitment\Create.cshtml" />
     <Content Include="Areas\Student\Views\web.config" />
@@ -400,6 +383,16 @@
     <Content Include="fonts\fonts_Recruitment\slickd41d.eot" />
     <Content Include="fonts\fonts_Recruitment\slick.woff" />
     <Content Include="fonts\fonts_Recruitment\slick.ttf" />
+    <Content Include="Content\CSS_Summernote\font\summernote.eot" />
+    <Content Include="Content\CSS_Summernote\font\summernote.ttf" />
+    <Content Include="Content\CSS_Summernote\font\summernote.woff" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.min.js" />
     <Content Include="Scripts\isotope.pkgd.min.js" />
@@ -439,6 +432,7 @@
     <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\plugins.js" />
     <Content Include="Scripts\slick.min.js" />
+    <Content Include="Scripts\summernote.min.js" />
     <Content Include="Scripts\tether.min.js" />
     <Content Include="Scripts\wow.min.js" />
     <Content Include="Web.config" />

@@ -1,4 +1,4 @@
-﻿@model VLURecruit.Models.Recruitment
+﻿@model VLURecruit.Models.RecruitmentSuppor
 
 @{
     ViewBag.Title = "Create";
@@ -7,10 +7,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Recruitment", new { area = "Company" }, FormMethod.Post, new { entype = "multiple" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Recruitment</h4>
         <hr />
@@ -31,68 +31,92 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nums_view, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nums_view, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nums_view, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Expire_date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Expire_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Expire_date, new { htmlAttributes = new { @class = "datepicker" } })
                 @Html.ValidationMessageFor(model => model.Expire_date, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.Company_id, "Company_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Company_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Company_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Status_id, "Status_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Status_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Status_id, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Districts_id, "Districts_id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Districts_id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("Districts_id", null, String.Empty, htmlAttributes: new { @class = "form-control", required = "required" })
                 @Html.ValidationMessageFor(model => model.Districts_id, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Created_date, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Is_Full_Time, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Created_date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Created_date, "", new { @class = "text-danger" })
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Is_Full_Time)
+                    @Html.ValidationMessageFor(model => model.Is_Full_Time, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Updated_date, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Is_Part_Time, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Updated_date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Updated_date, "", new { @class = "text-danger" })
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Is_Part_Time)
+                    @Html.ValidationMessageFor(model => model.Is_Part_Time, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>*@
+        </div>
 
-        
-            <div class="form-group">
-                
+        <div class="form-group">
+            @Html.LabelFor(model => model.Is_Intership, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Is_Intership)
+                    @Html.ValidationMessageFor(model => model.Is_Intership, "", new { @class = "text-danger" })
+                </div>
             </div>
+        </div>
 
-        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mo_ta_Chi_Tiet, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Mo_ta_Chi_Tiet, new { htmlAttributes = new { @class = "summernote" } })
+                @Html.ValidationMessageFor(model => model.Mo_ta_Chi_Tiet, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ky_Nang_Cong_Viec, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Ky_Nang_Cong_Viec, new { htmlAttributes = new { @class = "summernote" } })
+                @Html.ValidationMessageFor(model => model.Ky_Nang_Cong_Viec, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phuc_Loi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Phuc_Loi, new { htmlAttributes = new { @class = "summernote" } })
+                @Html.ValidationMessageFor(model => model.Phuc_Loi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tuy_Chon, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Tuy_Chon, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
+                @Html.ValidationMessageFor(model => model.Tuy_Chon, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.recttag, "Tag", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("recttag", (SelectList)ViewBag.recttag, new { @class = "form-control", @multiple = "true", @style = "nice-select.disabled" })
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -105,3 +129,63 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section scripts{
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <script>
+        $('#recttag').select2({ dropdownAutoWidth: true });
+        $('#Districts_id').select2({ dropdownAutoWidth: true });
+        $('.nice-select').hide();
+        $(function () {
+            $(".datepicker").datepicker();
+        });
+        $("#Tuy_Chon").summernote({
+            toolbar: [
+		    // [groupName, [list of button]]
+		    ['style', ['bold', 'italic']],
+		    ['para', ['ul', 'ol']],
+            ],
+            height: 150
+        });
+        $("#Tuy_Chon").attr('required', true)
+
+        $("#Phuc_Loi").summernote({
+            toolbar: [
+
+		    ['style', ['bold', 'italic']],
+		    ['para', ['ul', 'ol']],
+            ],
+            height: 150
+
+        });
+        $("#Phuc_Loi").attr('required', true).alert("Hello")
+
+        $("#Ky_Nang_Cong_Viec").summernote({
+            toolbar: [
+		    // [groupName, [list of button]]
+		    ['style', ['bold', 'italic']],
+		    ['para', ['ul', 'ol']],
+            ],
+            height: 150
+        });
+        $("#Ky_Nang_Cong_Viec").attr('required', true)
+
+        $("#Mo_ta_Chi_Tiet").summernote({
+            toolbar: [
+		    // [groupName, [list of button]]
+		    ['style', ['bold', 'italic']],
+		    ['para', ['ul', 'ol']],
+            ],
+            height: 150
+        });
+        $("#Mo_ta_Chi_Tiet").attr('required', true)
+
+
+    </script>
+}
+
+
+

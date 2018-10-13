@@ -65,7 +65,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name_Company" Type="nvarchar" MaxLength="50" />
     <Property Name="Introduce_Company" Type="nvarchar" MaxLength="200" />
     <Property Name="website_Company" Type="varchar" MaxLength="50" />
@@ -82,7 +82,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="District_Name" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Recruitments">
@@ -94,31 +94,18 @@
     <Property Name="Salary" Type="nvarchar" MaxLength="50" />
     <Property Name="Nums_view" Type="int" />
     <Property Name="Expire_date" Type="datetime" />
+    <Property Name="Districts_id" Type="int" Nullable="false" />
+    <Property Name="Is_Full_Time" Type="bit" Nullable="false" />
+    <Property Name="Is_Part_Time" Type="bit" Nullable="false" />
+    <Property Name="Is_Intership" Type="bit" Nullable="false" />
     <Property Name="Company_id" Type="int" Nullable="false" />
     <Property Name="Status_id" Type="int" Nullable="false" />
-    <Property Name="Districts_id" Type="int" Nullable="false" />
     <Property Name="Created_date" Type="datetime" />
     <Property Name="Updated_date" Type="datetime" />
-  </EntityType>
-  <EntityType Name="Sections">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="50" />
-    <Property Name="Created_date" Type="datetime" />
-    <Property Name="Updated_date" Type="datetime" />
-  </EntityType>
-  <EntityType Name="Sections_Recruitment">
-    <Key>
-      <PropertyRef Name="Section_id" />
-      <PropertyRef Name="Recruitment_id" />
-    </Key>
-    <Property Name="Section_id" Type="int" Nullable="false" />
-    <Property Name="Recruitment_id" Type="int" Nullable="false" />
-    <Property Name="Content" Type="nchar" MaxLength="10" />
-    <Property Name="Created_date" Type="datetime" />
-    <Property Name="Updated_date" Type="datetime" />
+    <Property Name="Mo_ta_Chi_Tiet" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ky_Nang_Cong_Viec" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phuc_Loi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tuy_Chon" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Staff_Info">
     <Key>
@@ -190,25 +177,6 @@
     <Property Name="Id_Tags" Type="int" Nullable="false" />
     <Property Name="Id_Recruitment" Type="int" Nullable="false" />
     <Property Name="Craeted_date" Type="datetime" />
-  </EntityType>
-  <EntityType Name="Times">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name_Time" Type="nvarchar" MaxLength="50" />
-    <Property Name="Created_date" Type="datetime" />
-    <Property Name="Updated_date" Type="datetime" />
-  </EntityType>
-  <EntityType Name="Times_Recruitment">
-    <Key>
-      <PropertyRef Name="Time_id" />
-      <PropertyRef Name="Recruitment_id" />
-    </Key>
-    <Property Name="Time_id" Type="int" Nullable="false" />
-    <Property Name="Recruitment_id" Type="int" Nullable="false" />
-    <Property Name="Created_date" Type="datetime" />
-    <Property Name="Updated_date" Type="datetime" />
   </EntityType>
   <Association Name="FK_Company_Info_AspNetUsers">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -326,30 +294,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Sections_Recruitment_Recruitments">
-    <End Role="Recruitments" Type="Self.Recruitments" Multiplicity="1" />
-    <End Role="Sections_Recruitment" Type="Self.Sections_Recruitment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Recruitments">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Sections_Recruitment">
-        <PropertyRef Name="Recruitment_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Sections_Recruitment_Sections">
-    <End Role="Sections" Type="Self.Sections" Multiplicity="1" />
-    <End Role="Sections_Recruitment" Type="Self.Sections_Recruitment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sections">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Sections_Recruitment">
-        <PropertyRef Name="Section_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Staff_Info_AspNetUsers">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
     <End Role="Staff_Info" Type="Self.Staff_Info" Multiplicity="*" />
@@ -422,30 +366,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Times_Recruitment_Recruitments">
-    <End Role="Recruitments" Type="Self.Recruitments" Multiplicity="1" />
-    <End Role="Times_Recruitment" Type="Self.Times_Recruitment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Recruitments">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Times_Recruitment">
-        <PropertyRef Name="Recruitment_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Times_Recruitment_Times">
-    <End Role="Times" Type="Self.Times" Multiplicity="1" />
-    <End Role="Times_Recruitment" Type="Self.Times_Recruitment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Times">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Times_Recruitment">
-        <PropertyRef Name="Time_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="jobeeModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -456,8 +376,6 @@
     <EntitySet Name="Company_Info" EntityType="Self.Company_Info" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Recruitments" EntityType="Self.Recruitments" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Sections" EntityType="Self.Sections" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Sections_Recruitment" EntityType="Self.Sections_Recruitment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Staff_Info" EntityType="Self.Staff_Info" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Status_Account" EntityType="Self.Status_Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Status_Recruitment" EntityType="Self.Status_Recruitment" Schema="dbo" store:Type="Tables" />
@@ -465,8 +383,6 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tags_Recruitments" EntityType="Self.Tags_Recruitments" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Times" EntityType="Self.Times" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Times_Recruitment" EntityType="Self.Times_Recruitment" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Company_Info_AspNetUsers" Association="Self.FK_Company_Info_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Company_Info" EntitySet="Company_Info" />
@@ -503,14 +419,6 @@
       <End Role="Status_Recruitment" EntitySet="Status_Recruitment" />
       <End Role="Recruitments" EntitySet="Recruitments" />
     </AssociationSet>
-    <AssociationSet Name="FK_Sections_Recruitment_Recruitments" Association="Self.FK_Sections_Recruitment_Recruitments">
-      <End Role="Recruitments" EntitySet="Recruitments" />
-      <End Role="Sections_Recruitment" EntitySet="Sections_Recruitment" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Sections_Recruitment_Sections" Association="Self.FK_Sections_Recruitment_Sections">
-      <End Role="Sections" EntitySet="Sections" />
-      <End Role="Sections_Recruitment" EntitySet="Sections_Recruitment" />
-    </AssociationSet>
     <AssociationSet Name="FK_Staff_Info_AspNetUsers" Association="Self.FK_Staff_Info_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Staff_Info" EntitySet="Staff_Info" />
@@ -534,14 +442,6 @@
     <AssociationSet Name="FK_Tags_Recruitments_Tags" Association="Self.FK_Tags_Recruitments_Tags">
       <End Role="Tags" EntitySet="Tags" />
       <End Role="Tags_Recruitments" EntitySet="Tags_Recruitments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Times_Recruitment_Recruitments" Association="Self.FK_Times_Recruitment_Recruitments">
-      <End Role="Recruitments" EntitySet="Recruitments" />
-      <End Role="Times_Recruitment" EntitySet="Times_Recruitment" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Times_Recruitment_Times" Association="Self.FK_Times_Recruitment_Times">
-      <End Role="Times" EntitySet="Times" />
-      <End Role="Times_Recruitment" EntitySet="Times_Recruitment" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
