@@ -11,7 +11,8 @@ namespace VLURecruit.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Recruitment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +23,7 @@ namespace VLURecruit.Models
     
         public int Id { get; set; }
         public string title { get; set; }
-        public string Salary { get; set; }
+        public Nullable<int> Salary { get; set; }
         public Nullable<int> Nums_view { get; set; }
         public Nullable<System.DateTime> Expire_date { get; set; }
         public int Districts_id { get; set; }
@@ -33,10 +34,10 @@ namespace VLURecruit.Models
         public int Status_id { get; set; }
         public Nullable<System.DateTime> Created_date { get; set; }
         public Nullable<System.DateTime> Updated_date { get; set; }
-        public string Mo_ta_Chi_Tiet { get; set; }
-        public string Ky_Nang_Cong_Viec { get; set; }
-        public string Phuc_Loi { get; set; }
-        public string Tuy_Chon { get; set; }
+        public string Job_Description { get; set; }
+        public string Required_Skills { get; set; }
+        public string Job_Benefits { get; set; }
+        public string Job_Optional { get; set; }
     
         public virtual Company_Info Company_Info { get; set; }
         public virtual District District { get; set; }

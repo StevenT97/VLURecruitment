@@ -96,7 +96,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Salary" Type="Int32" />
     <Property Name="Nums_view" Type="Int32" />
     <Property Name="Expire_date" Type="DateTime" Precision="3" />
     <Property Name="Districts_id" Type="Int32" Nullable="false" />
@@ -107,10 +107,10 @@
     <Property Name="Status_id" Type="Int32" Nullable="false" />
     <Property Name="Created_date" Type="DateTime" Precision="3" />
     <Property Name="Updated_date" Type="DateTime" Precision="3" />
-    <Property Name="Mo_ta_Chi_Tiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Ky_Nang_Cong_Viec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Phuc_Loi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Tuy_Chon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Job_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Required_Skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Job_Benefits" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Job_Optional" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Company_Info" Relationship="Self.FK_Recruitments_Company_Info" FromRole="Recruitments" ToRole="Company_Info" />
     <NavigationProperty Name="District" Relationship="Self.FK_Recruitments_Districts" FromRole="Recruitments" ToRole="Districts" />
     <NavigationProperty Name="Status_Recruitment" Relationship="Self.FK_Recruitments_Status_Recruitment" FromRole="Recruitments" ToRole="Status_Recruitment" />
