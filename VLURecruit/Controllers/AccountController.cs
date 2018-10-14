@@ -82,6 +82,7 @@ namespace VLURecruit.Controllers
             if (!user.EmailConfirmed && result == SignInStatus.Success)
             {
                 ViewBag.mess= "Invalid login attempt. You must have a confirmed email account.";
+                
                 return View(model);
             }
 
@@ -108,7 +109,10 @@ namespace VLURecruit.Controllers
                     //check user role stident
                     if (await UserManager.IsInRoleAsync(user.Id, "Student"))
                     {
-                        return RedirectToAction("Index", "Home", new { area = "Student" });
+                        Student_Info StuInfo = new Student_Info();
+                        var StudentName = StuInfo.Student_Name;
+                        Session["StudentNa"] = StudentName;
+                        return RedirectToAction("ListOfRecruitment", "Recruitment", new { area = "Student" });
                     }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
@@ -404,10 +408,11 @@ namespace VLURecruit.Controllers
                 if (user.Email.Contains("@vanlanguni.vn"))
                 {
                     var result = await UserManager.CreateAsync(user);
+                    var check = CreateStudent(user);
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    if (result.Succeeded)
+                    if (result.Succeeded && check==true)
                     {
                         result = await UserManager.AddLoginAsync(user.Id, info.Login);
                         if (result.Succeeded)
@@ -440,6 +445,30 @@ namespace VLURecruit.Controllers
         public ActionResult ExternalLoginFailure()
         {
             return View();
+        }
+
+        //create student_info
+        public bool CreateStudent(ApplicationUser user)
+        {
+            using (jobeeEntities db = new jobeeEntities())
+            {
+                Student_Info nStudent = new Student_Info
+                {
+                    Account_Id = user.Id,
+                    Status_Id = 1,
+                    Student_Name = user.UserName,
+                    Student_Create_at = DateTime.Now
+                };
+                db.Student_Info.Add(nStudent);
+                try
+                {
+                    db.SaveChanges();
+                    var check =UserManager.AddToRole(user.Id, "Student");
+                    return true;
+                }
+                catch { }
+            }
+            return false;
         }
 
         protected override void Dispose(bool disposing)

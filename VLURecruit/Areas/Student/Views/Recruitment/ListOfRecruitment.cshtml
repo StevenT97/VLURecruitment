@@ -1,6 +1,8 @@
-﻿
+﻿@using VLURecruit.Models;
+@model IEnumerable<VLURecruit.Models.Recruitment>
 @{
     Layout = null;
+    var model = new jobeeEntities();
 }
 
 <!DOCTYPE html>
@@ -262,7 +264,7 @@
                                                 </div>
                                             </div><!--username-dt end-->
                                             <div class="user-specs">
-                                                <h3>TRẦN VĂN NGUYÊN HẢO</h3>
+                                                <h3>ViewBag.Name</h3>
 
                                             </div>
                                         </div><!--user-profile end-->
@@ -352,143 +354,219 @@
                                 <div class="main-ws-sec">
 
                                     <div class="posts-section">
-                                        <div class="post-bar">
-                                            <div class="post_topbar">
-                                                <div class="usy-dt">
-                                                    <img src="~/Assets/icon/company-logo/live.png" alt="">
-                                                    <div class="usy-name">
-                                                        <h1>Live Group</h1>
+                                        @foreach (var item in Model)
+                                        {
+                                            <div class="post-bar">
+                                                <div class="post_topbar">
+                                                    <div class="usy-dt">
+                                                        <img src="~/Assets/icon/company-logo/live.png" alt="">
+                                                        <div class="usy-name">
+                                                            <h1>@item.Company_Info.Name_Company</h1>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ed-opts">
+                                                        <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                        <ul class="ed-options">
+                                                            <li><a href="#" title="">Unsaved</a></li>
+                                                            <li><a href="#" title="">Close</a></li>
+                                                            <li><a href="#" title="">Hide</a></li>
+                                                        </ul>
                                                     </div>
                                                 </div>
-                                                <div class="ed-opts">
-                                                    <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                    <ul class="ed-options">
-                                                        <li><a href="#" title="">Unsaved</a></li>
-                                                        <li><a href="#" title="">Close</a></li>
-                                                        <li><a href="#" title="">Hide</a></li>
+                                                <div class="epi-sec">
+                                                    <ul class="descp">
+                                                        <li><span>Ho Chi Minh</span></li>
+                                                        <li><span>@item.District.District_Name</span></li>
+                                                    </ul>
+                                                    <ul class="bk-links">
+                                                        <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
+                                                        <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
                                                     </ul>
                                                 </div>
-                                            </div>
-                                            <div class="epi-sec">
-                                                <ul class="descp">
-                                                    <li><span>Ho Chi Minh</span></li>
-                                                    <li><span>District 1</span></li>
-                                                </ul>
-                                                <ul class="bk-links">
-                                                    <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                    <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="job_descp">
-                                                <h3>.NET Developer (ASP.NET, C#, JavaScript)</h3>
-                                                <ul class="job-dt">
-                                                    <li><a href="#" title="">Full Time</a></li>
-                                                    <li><span>$600 / month</span></li>
-                                                </ul>
-                                                <p>The successful Senior Software Engineer will work on maintaining existing applications, analyze business problems/needs, and provide existing, new or...  <a href="#" title="">view more</a></p>
-                                                <ul class="skill-tags">
-                                                    <li><a href="#" title="">C#</a></li>
-                                                    <li><a href="#" title="">.NET</a></li>
-                                                    <li><a href="#" title="">Javascript</a></li>
-                                                </ul>
-                                                <a style="float:right;"><i class="la la-eye"></i>  Views : 50</a>
-                                            </div>
-                                        </div><!--post-bar end-->
+                                                <div class="job_descp">
+                                                    <h3>@item.title</h3>
+                                                    <ul class="job-dt">
+                                                        @if (item.Is_Full_Time == true)
+                                                        {
+                                                            <li><a href="#" title="">FullTime</a></li>
+                                                        }
+                                                        @if (item.Is_Part_Time == true)
+                                                        {
+                                                            <li><a href="#" title="">PartTime</a></li>
+                                                        }
+                                                        @if (item.Is_Intership == true)
+                                                        {
+                                                            <li><a href="#" title="">Intership</a></li>
+                                                        }
 
+                                                        <li><span>@item.Salary VND</span></li>
+                                                    </ul>
+                                                    @*<p>@Html.Raw(@item.Mo_ta_Chi_Tiet).ToString().Substring(0,10)</p>*@
+                                                    @{
+                                                        if (item.Mo_ta_Chi_Tiet != null && item.Mo_ta_Chi_Tiet.Length >= 100)
+                                                        {
+                                                            <span>@item.Mo_ta_Chi_Tiet.Substring(0, 100)...</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>@item.Mo_ta_Chi_Tiet</span>
+                                                        }
+                                                    }
+                                                    <ul class="skill-tags">
+                                                        @foreach (var rec in model.Tags_Recruitments)
+                                                        {
+                                                            foreach (var i in model.Tags)
+                                                            {
+                                                                if (i.Id == rec.Id_Tags && item.Id == rec.Id_Recruitment)
+                                                                {
+                                                                    <li><a href="#" title="">@i.Name_Tag</a></li>
+                                                                }
+                                                            }
+                                                        }                                                       
+                                                        
+                                                    </ul>
+                                                    @*<a style="float:right;"><i class="la la-eye"></i>  Views : 50</a>*@
+                                                </div>
+                                            </div><!--post-bar end-->
+                                        }
 
-                                        <div class="post-bar">
-                                            <div class="post_topbar">
-                                                <div class="usy-dt">
-                                                    <img src="~/Assets/icon/company-logo/flix.png" alt="">
-                                                    <div class="usy-name">
-                                                        <h1>FLIX</h1>
+                                        @*<div class="post-bar">
+                                                <div class="post_topbar">
+                                                    <div class="usy-dt">
+                                                        <img src="~/Assets/icon/company-logo/live.png" alt="">
+                                                        <div class="usy-name">
+                                                            <h1>Live Group</h1>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ed-opts">
+                                                        <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                        <ul class="ed-options">
+                                                            <li><a href="#" title="">Unsaved</a></li>
+                                                            <li><a href="#" title="">Close</a></li>
+                                                            <li><a href="#" title="">Hide</a></li>
+                                                        </ul>
                                                     </div>
                                                 </div>
-                                                <div class="ed-opts">
-                                                    <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                    <ul class="ed-options">
-                                                        <li><a href="#" title="">Unsaved</a></li>
-                                                        <li><a href="#" title="">Close</a></li>
-                                                        <li><a href="#" title="">Hide</a></li>
+                                                <div class="epi-sec">
+                                                    <ul class="descp">
+                                                        <li><span>Ho Chi Minh</span></li>
+                                                        <li><span>District 1</span></li>
+                                                    </ul>
+                                                    <ul class="bk-links">
+                                                        <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
+                                                        <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
                                                     </ul>
                                                 </div>
-                                            </div>
-                                            <div class="epi-sec">
-                                                <ul class="descp">
-                                                    <li><span>Ho Chi Minh</span></li>
-                                                    <li><span>District 10</span></li>
-                                                </ul>
-                                                <ul class="bk-links">
-                                                    <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                    <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="job_descp">
-                                                <h3>Junior Devs (Java/Python/iOS)</h3>
-                                                <ul class="job-dt">
-                                                    <li><a href="#" title="">Full Time</a></li>
-                                                    <li><span>$1000 / month</span></li>
-                                                </ul>
-                                                <p>
-                                                    Our product provides a power solution, great flexibility and adaptability for Digital marketing including many tools such as Dazikzak - a social...
-                                                    <a href="#" title="">view more</a>
-                                                </p>
-                                                <ul class="skill-tags">
-                                                    <li><a href="#" title="">Python</a></li>
-                                                    <li><a href="#" title="">Java</a></li>
-                                                    <li><a href="#" title="">iOS</a></li>
-                                                </ul>
-                                                <a style="float:right;"><i class="la la-eye"></i>  Views : 150</a>
-                                            </div>
-                                        </div><!--post-bar end-->
+                                                <div class="job_descp">
+                                                    <h3>.NET Developer (ASP.NET, C#, JavaScript)</h3>
+                                                    <ul class="job-dt">
+                                                        <li><a href="#" title="">Full Time</a></li>
+                                                        <li><span>$600 / month</span></li>
+                                                    </ul>
+                                                    <p>The successful Senior Software Engineer will work on maintaining existing applications, analyze business problems/needs, and provide existing, new or...  <a href="#" title="">view more</a></p>
+                                                    <ul class="skill-tags">
+                                                        <li><a href="#" title="">C#</a></li>
+                                                        <li><a href="#" title="">.NET</a></li>
+                                                        <li><a href="#" title="">Javascript</a></li>
+                                                    </ul>
+                                                    <a style="float:right;"><i class="la la-eye"></i>  Views : 50</a>
+                                                </div>
+                                            </div><!--post-bar end-->
 
-                                        <div class="post-bar">
-                                            <div class="post_topbar">
-                                                <div class="usy-dt">
-                                                    <img src="~/Assets/icon/company-logo/cross.png" alt="">
-                                                    <div class="usy-name">
-                                                        <h1>Crosstrack</h1>
+
+                                            <div class="post-bar">
+                                                <div class="post_topbar">
+                                                    <div class="usy-dt">
+                                                        <img src="~/Assets/icon/company-logo/flix.png" alt="">
+                                                        <div class="usy-name">
+                                                            <h1>FLIX</h1>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ed-opts">
+                                                        <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                        <ul class="ed-options">
+                                                            <li><a href="#" title="">Unsaved</a></li>
+                                                            <li><a href="#" title="">Close</a></li>
+                                                            <li><a href="#" title="">Hide</a></li>
+                                                        </ul>
                                                     </div>
                                                 </div>
-                                                <div class="ed-opts">
-                                                    <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                    <ul class="ed-options">
-                                                        <li><a href="#" title="">Unsaved</a></li>
-                                                        <li><a href="#" title="">Close</a></li>
-                                                        <li><a href="#" title="">Hide</a></li>
+                                                <div class="epi-sec">
+                                                    <ul class="descp">
+                                                        <li><span>Ho Chi Minh</span></li>
+                                                        <li><span>District 10</span></li>
+                                                    </ul>
+                                                    <ul class="bk-links">
+                                                        <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
+                                                        <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
                                                     </ul>
                                                 </div>
-                                            </div>
-                                            <div class="epi-sec">
-                                                <ul class="descp">
-                                                    <li><span>Ho Chi Minh</span></li>
-                                                    <li><span>District 1</span></li>
-                                                </ul>
-                                                <ul class="bk-links">
-                                                    <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                    <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="job_descp">
-                                                <h3>Frontend Developer (HTML/CSS/JavaScript)</h3>
-                                                <ul class="job-dt">
-                                                    <li><a href="#" title="">Full Time</a></li>
-                                                    <li><span>$300 / month</span></li>
-                                                </ul>
-                                                <p>
-                                                    We are looking for a frontend developer to develop a cutting edge technology in the logistics industry, to be able to attend meetings and work with team...
-                                                    <a href="#" title="">view more</a>
-                                                </p>
-                                                <ul class="skill-tags">
-                                                    <li><a href="#" title="">JavaScript</a></li>
-                                                    <li><a href="#" title="">HTML5</a></li>
-                                                    <li><a href="#" title="">CSS</a></li>
-                                                    <li><a href="#" title="">Angular 6</a></li>
-                                                    <li><a href="#" title="">Bootstrap</a></li>
-                                                </ul>
-                                                <a style="float:right;"><i class="la la-eye"></i>  Views : 30</a>
-                                            </div>
-                                        </div><!--post-bar end-->
+                                                <div class="job_descp">
+                                                    <h3>Junior Devs (Java/Python/iOS)</h3>
+                                                    <ul class="job-dt">
+                                                        <li><a href="#" title="">Full Time</a></li>
+                                                        <li><span>$1000 / month</span></li>
+                                                    </ul>
+                                                    <p>
+                                                        Our product provides a power solution, great flexibility and adaptability for Digital marketing including many tools such as Dazikzak - a social...
+                                                        <a href="#" title="">view more</a>
+                                                    </p>
+                                                    <ul class="skill-tags">
+                                                        <li><a href="#" title="">Python</a></li>
+                                                        <li><a href="#" title="">Java</a></li>
+                                                        <li><a href="#" title="">iOS</a></li>
+                                                    </ul>
+                                                    <a style="float:right;"><i class="la la-eye"></i>  Views : 150</a>
+                                                </div>
+                                            </div><!--post-bar end-->
+
+                                            <div class="post-bar">
+                                                <div class="post_topbar">
+                                                    <div class="usy-dt">
+                                                        <img src="~/Assets/icon/company-logo/cross.png" alt="">
+                                                        <div class="usy-name">
+                                                            <h1>Crosstrack</h1>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ed-opts">
+                                                        <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                        <ul class="ed-options">
+                                                            <li><a href="#" title="">Unsaved</a></li>
+                                                            <li><a href="#" title="">Close</a></li>
+                                                            <li><a href="#" title="">Hide</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="epi-sec">
+                                                    <ul class="descp">
+                                                        <li><span>Ho Chi Minh</span></li>
+                                                        <li><span>District 1</span></li>
+                                                    </ul>
+                                                    <ul class="bk-links">
+                                                        <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
+                                                        <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="job_descp">
+                                                    <h3>Frontend Developer (HTML/CSS/JavaScript)</h3>
+                                                    <ul class="job-dt">
+                                                        <li><a href="#" title="">Full Time</a></li>
+                                                        <li><span>$300 / month</span></li>
+                                                    </ul>
+                                                    <p>
+                                                        We are looking for a frontend developer to develop a cutting edge technology in the logistics industry, to be able to attend meetings and work with team...
+                                                        <a href="#" title="">view more</a>
+                                                    </p>
+                                                    <ul class="skill-tags">
+                                                        <li><a href="#" title="">JavaScript</a></li>
+                                                        <li><a href="#" title="">HTML5</a></li>
+                                                        <li><a href="#" title="">CSS</a></li>
+                                                        <li><a href="#" title="">Angular 6</a></li>
+                                                        <li><a href="#" title="">Bootstrap</a></li>
+                                                    </ul>
+                                                    <a style="float:right;"><i class="la la-eye"></i>  Views : 30</a>
+                                                </div>
+                                            </div><!--post-bar end-->*@
 
 
 

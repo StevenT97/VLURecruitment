@@ -176,15 +176,19 @@
                                 <div class="items">
                                     <div class="right-con">
                                         <figure><img src="~/Assets/icon/12.png" alt=""></figure>
-                                        @if (item.Times_Recruitment.FirstOrDefault(x=> x.Recruitment_id== item.Id).Time.Name_Time == "Part-Time")
+                                        @if (item.Is_Part_Time == true)
                                         {
                                             <span class="color1">Part Time</span>
                                         }
-                                        @if (item.Times_Recruitment.FirstOrDefault(x=> x.Recruitment_id== item.Id).Time.Name_Time == "Full-Time")
+                                        @if (item.Is_Full_Time == true)
                                         {
                                             <span class="color2">Full Time</span>
                                         }
-                                        
+                                        @if (item.Is_Intership == true)
+                                        {
+                                            <span class="color3">Intership</span>
+                                        }
+
                                     </div>
                                     <div class="content">
                                             <h3><a href="@Url.Action("Detail","Home",new { id=item.Id})">@item.title</a><button><i class="fa fa-heart"></i></button></h3>

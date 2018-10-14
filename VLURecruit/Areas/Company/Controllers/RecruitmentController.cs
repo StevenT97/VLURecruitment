@@ -79,9 +79,5 @@ namespace VLURecruit.Areas.Company.Controllers
 
             return RedirectToAction("Index", "Home", new { area = "Company" });
         }
-        public ActionResult ListOfRecruitment()
-        {
-            return View();
-        }
     }
 }
