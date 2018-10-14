@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+    
 }
 
 <!--Job searcing area start here-->
@@ -13,8 +14,8 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
                             <div class="heading_con">
-                                <h2><span class="counter-anim">3,000</span><span>+</span> Browse Jobs</h2>
-                                <h3>Find Jobs, Employment & Career Opportunities</h3>
+                                <h2><span class="counter-anim">@ViewBag.count</span><span>+</span> Công Việc Hiện Có</h2>
+                                <h3>Tìm công việc mơ ước của bạn ngay bây giờ</h3>
                             </div>
                         </div>
                         <div class="col-lg-10 col-md-12 col-sm-12 offset-lg-1">
@@ -48,7 +49,7 @@
                                     </div>
                                     <div class="col-lg-2 col-md-6 col-sm-12 col-12">
                                         <fieldset>
-                                            <button class="btn1">Search</button>
+                                            <button class="btn1">Tìm</button>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -56,7 +57,7 @@
                         </div>
                         <div class="col-lg-10 col-sm-12 offset-lg-1">
                             <div class="keyword">
-                                <p>Trending Keywords :</p>
+                                <p>Từ Khóa Nổi Bật :</p>
                                 <ul>
                                     <li><a href="#">Developer</a></li>
                                     <li><a href="#">Design</a></li>
@@ -81,7 +82,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="intro">
-                    <h4>Browse some featured categories</h4>
+                    <h4>Một Số Doanh Mục Nổi Bật</h4>
                 </div>
             </div>
         </div>
@@ -161,8 +162,8 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="section-heading">
-                    <h2>FEATURED JOBS</h2>
-                    <p>A better career is out there. We'll help you find it. We're your first step to becoming everything you want to be.</p>
+                    <h2>CÔNG VIỆC NỔI BẬT</h2>
+                    <p>Nếu một công việc tốt đang thiếu tài năng, chúng tôi sẽ giúp bạn tìm thấy nó. Chúng tôi là bước đầu tiên của bạn để mọi thứ bạn muốn trở nên có thể.</p>
                 </div>
             </div>
         </div>
@@ -211,7 +212,7 @@
 </section>
 <!--Features jobs area End here-->
 <!--Banner area start here-->
-<section class="banner-area">
+@*<section class="banner-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
@@ -224,7 +225,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 <!--Banner area End here-->
 <!--Company register area start here-->
 <section class="company_register section">
@@ -232,8 +233,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="section-heading">
-                    <h2>TOP COMPANY REGISTERED</h2>
-                    <p>A better career is out there. We'll help you find it. We're your first step to becoming everything you want to be.</p>
+                    <h2>NHỮNG THÀNH VIÊN CỦA JOBEE</h2>
                 </div>
             </div>
         </div>
@@ -728,7 +728,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="section-heading">
-                    <h2>Latest Blog Post</h2>
+                    <h2>Tin Tức</h2>
                 </div>
             </div>
         </div>
@@ -845,16 +845,15 @@
                         <div class="sub_con">
                             <span><img src="http://webdevproof.com/theme-forest-demo/job/demo1/assets/images/icons/3.png" alt="" /></span>
                             <div class="con">
-                                <h3>Get Jobs Notifications</h3>
-                                <p>Free Subscribe Our Newsletter Now!</p>
+                                <h3>Nhận Thông Báo Về Việc Làm Sớm Nhất</h3>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12 col-xl-6 col-sm-12">
                         <div class="sub_form">
                             <form>
-                                <input type="email" placeholder="Type Your Email Address">
-                                <input class="btn1" type="submit" value="Submit">
+                                <input type="email" placeholder="Địa Chỉ Email">
+                                <input class="btn1" type="submit" value="Gửi    ">
                             </form>
                         </div>
                     </div>

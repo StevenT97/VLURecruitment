@@ -403,13 +403,13 @@
                                                     </ul>
                                                     @*<p>@Html.Raw(@item.Mo_ta_Chi_Tiet).ToString().Substring(0,10)</p>*@
                                                     @{
-                                                        if (item.Mo_ta_Chi_Tiet != null && item.Mo_ta_Chi_Tiet.Length >= 100)
+                                                        if (item.Job_Description != null && item.Job_Description.Length >= 100)
                                                         {
-                                                            <span>@item.Mo_ta_Chi_Tiet.Substring(0, 100)...</span>
+                                                            <span>@item.Job_Description.Substring(0, 100)...</span>
                                                         }
                                                         else
                                                         {
-                                                            <span>@item.Mo_ta_Chi_Tiet</span>
+                                                            <span>@item.Job_Description</span>
                                                         }
                                                     }
                                                     <ul class="skill-tags">

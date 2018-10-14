@@ -18,8 +18,8 @@ namespace VLURecruit.Areas.Student.Controllers
             var day = DateTime.Now;
             List<object> list = new List<object>();
             var recruitment = model.Recruitments.ToList().Where(x => x.Expire_date >= day).OrderByDescending(x => x.Id);
-            var userId = User.Identity.GetUserId();
-            ViewBag.Name = model.Student_Info.FirstOrDefault(x => x.Account_Id == userId).Student_Name;
+            //var userId = User.Identity.GetUserId();
+            //ViewBag.Name = model.Student_Info.FirstOrDefault(x => x.Account_Id == userId).Student_Name;
             return View(recruitment);
         }
     }
