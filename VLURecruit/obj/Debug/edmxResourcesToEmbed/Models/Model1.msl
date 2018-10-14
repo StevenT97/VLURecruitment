@@ -98,10 +98,10 @@
           <ScalarProperty Name="Status_id" ColumnName="Status_id" />
           <ScalarProperty Name="Created_date" ColumnName="Created_date" />
           <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
-          <ScalarProperty Name="Mo_ta_Chi_Tiet" ColumnName="Mo_ta_Chi_Tiet" />
-          <ScalarProperty Name="Ky_Nang_Cong_Viec" ColumnName="Ky_Nang_Cong_Viec" />
-          <ScalarProperty Name="Phuc_Loi" ColumnName="Phuc_Loi" />
-          <ScalarProperty Name="Tuy_Chon" ColumnName="Tuy_Chon" />
+          <ScalarProperty Name="Job_Description" ColumnName="Job_Description" />
+          <ScalarProperty Name="Required_Skills" ColumnName="Required_Skills" />
+          <ScalarProperty Name="Job_Benefits" ColumnName="Job_Benefits" />
+          <ScalarProperty Name="Job_Optional" ColumnName="Job_Optional" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

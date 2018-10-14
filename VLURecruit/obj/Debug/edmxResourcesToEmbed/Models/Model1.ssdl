@@ -91,7 +91,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="title" Type="nvarchar(max)" />
-    <Property Name="Salary" Type="nvarchar" MaxLength="50" />
+    <Property Name="Salary" Type="int" />
     <Property Name="Nums_view" Type="int" />
     <Property Name="Expire_date" Type="datetime" />
     <Property Name="Districts_id" Type="int" Nullable="false" />
@@ -102,10 +102,10 @@
     <Property Name="Status_id" Type="int" Nullable="false" />
     <Property Name="Created_date" Type="datetime" />
     <Property Name="Updated_date" Type="datetime" />
-    <Property Name="Mo_ta_Chi_Tiet" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Ky_Nang_Cong_Viec" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Phuc_Loi" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Tuy_Chon" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Job_Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Required_Skills" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Job_Benefits" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Job_Optional" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Staff_Info">
     <Key>

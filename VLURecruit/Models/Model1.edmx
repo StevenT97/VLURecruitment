@@ -96,7 +96,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar(max)" />
-          <Property Name="Salary" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salary" Type="int" />
           <Property Name="Nums_view" Type="int" />
           <Property Name="Expire_date" Type="datetime" />
           <Property Name="Districts_id" Type="int" Nullable="false" />
@@ -107,10 +107,10 @@
           <Property Name="Status_id" Type="int" Nullable="false" />
           <Property Name="Created_date" Type="datetime" />
           <Property Name="Updated_date" Type="datetime" />
-          <Property Name="Mo_ta_Chi_Tiet" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Ky_Nang_Cong_Viec" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Phuc_Loi" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Tuy_Chon" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Job_Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Required_Skills" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Job_Benefits" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Job_Optional" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Staff_Info">
           <Key>
@@ -550,7 +550,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="Int32" />
           <Property Name="Nums_view" Type="Int32" />
           <Property Name="Expire_date" Type="DateTime" Precision="3" />
           <Property Name="Districts_id" Type="Int32" Nullable="false" />
@@ -561,10 +561,10 @@
           <Property Name="Status_id" Type="Int32" Nullable="false" />
           <Property Name="Created_date" Type="DateTime" Precision="3" />
           <Property Name="Updated_date" Type="DateTime" Precision="3" />
-          <Property Name="Mo_ta_Chi_Tiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Ky_Nang_Cong_Viec" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phuc_Loi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Tuy_Chon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Job_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Required_Skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Job_Benefits" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Job_Optional" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Company_Info" Relationship="Self.FK_Recruitments_Company_Info" FromRole="Recruitments" ToRole="Company_Info" />
           <NavigationProperty Name="District" Relationship="Self.FK_Recruitments_Districts" FromRole="Recruitments" ToRole="Districts" />
           <NavigationProperty Name="Status_Recruitment" Relationship="Self.FK_Recruitments_Status_Recruitment" FromRole="Recruitments" ToRole="Status_Recruitment" />
@@ -992,10 +992,10 @@
                 <ScalarProperty Name="Status_id" ColumnName="Status_id" />
                 <ScalarProperty Name="Created_date" ColumnName="Created_date" />
                 <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
-                <ScalarProperty Name="Mo_ta_Chi_Tiet" ColumnName="Mo_ta_Chi_Tiet" />
-                <ScalarProperty Name="Ky_Nang_Cong_Viec" ColumnName="Ky_Nang_Cong_Viec" />
-                <ScalarProperty Name="Phuc_Loi" ColumnName="Phuc_Loi" />
-                <ScalarProperty Name="Tuy_Chon" ColumnName="Tuy_Chon" />
+                <ScalarProperty Name="Job_Description" ColumnName="Job_Description" />
+                <ScalarProperty Name="Required_Skills" ColumnName="Required_Skills" />
+                <ScalarProperty Name="Job_Benefits" ColumnName="Job_Benefits" />
+                <ScalarProperty Name="Job_Optional" ColumnName="Job_Optional" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

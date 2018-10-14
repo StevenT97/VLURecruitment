@@ -50,10 +50,10 @@ namespace VLURecruit.Areas.Company.Controllers
                 Is_Full_Time = data.Is_Full_Time,
                 Is_Part_Time = data.Is_Part_Time,
                 Is_Intership = data.Is_Intership,
-                Mo_ta_Chi_Tiet = data.Mo_ta_Chi_Tiet,
-                Ky_Nang_Cong_Viec = data.Ky_Nang_Cong_Viec,
-                Phuc_Loi = data.Phuc_Loi,
-                Tuy_Chon = data.Tuy_Chon,
+                Job_Description = data.Mo_ta_Chi_Tiet,
+                Required_Skills = data.Ky_Nang_Cong_Viec,
+                Job_Benefits = data.Phuc_Loi,
+                Job_Optional = data.Tuy_Chon,
                 Created_date = DateTime.Now,
             };
             db.Recruitments.Add(nRec);
