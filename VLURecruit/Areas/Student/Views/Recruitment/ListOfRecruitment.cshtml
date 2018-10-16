@@ -260,7 +260,7 @@
                                         <div class="user-profile">
                                             <div class="username-dt">
                                                 <div class="usr-pic">
-                                                    <img src="~/Assets/img/logo-sing.png" alt="">
+                                                    <img src="" alt="">
                                                 </div>
                                             </div><!--username-dt end-->
                                             <div class="user-specs">
@@ -359,24 +359,19 @@
                                             <div class="post-bar">
                                                 <div class="post_topbar">
                                                     <div class="usy-dt">
-                                                        <img src="~/Assets/icon/company-logo/live.png" alt="">
+                                                        @*Đây là ảnh logo đã chỉnh sửa*@
+                                                        <img src="~/Assets/icon/4.png" alt="">
                                                         <div class="usy-name">
-                                                            <h1>@item.Company_Info.Name_Company</h1>
+                                                            <h3>@item.Company_Info.Name_Company</h3>
                                                         </div>
-                                                    </div>
-                                                    <div class="ed-opts">
-                                                        <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                                        <ul class="ed-options">
-                                                            <li><a href="#" title="">Unsaved</a></li>
-                                                            <li><a href="#" title="">Close</a></li>
-                                                            <li><a href="#" title="">Hide</a></li>
-                                                        </ul>
                                                     </div>
                                                 </div>
                                                 <div class="epi-sec">
                                                     <ul class="descp">
                                                         <li><span>Ho Chi Minh</span></li>
                                                         <li><span>@item.District.District_Name</span></li>
+                                                        <br />
+
                                                     </ul>
                                                     <ul class="bk-links">
                                                         <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
@@ -401,17 +396,11 @@
 
                                                         <li><span>@item.Salary VND</span></li>
                                                     </ul>
-                                                    @*<p>@Html.Raw(@item.Mo_ta_Chi_Tiet).ToString().Substring(0,10)</p>*@
-                                                    @{
-                                                        if (item.Job_Description != null && item.Job_Description.Length >= 100)
-                                                        {
-                                                            <span>@item.Job_Description.Substring(0, 100)...</span>
-                                                        }
-                                                        else
-                                                        {
-                                                            <span>@item.Job_Description</span>
-                                                        }
-                                                    }
+
+                                                    <div class="more">
+                                                        <p>@Html.Raw(@item.Job_Description).ToString();</p>
+                                                    </div>
+
                                                     <ul class="skill-tags">
                                                         @foreach (var rec in model.Tags_Recruitments)
                                                         {
@@ -422,8 +411,8 @@
                                                                     <li><a href="#" title="">@i.Name_Tag</a></li>
                                                                 }
                                                             }
-                                                        }                                                       
-                                                        
+                                                        }
+
                                                     </ul>
                                                     @*<a style="float:right;"><i class="la la-eye"></i>  Views : 50</a>*@
                                                 </div>
@@ -688,5 +677,45 @@
 </body>
 <script>'undefined' === typeof _trfq || (window._trfq = []); 'undefined' === typeof _trfd && (window._trfd = []), _trfd.push({ 'tccl.baseHost': 'secureserver.net' }), _trfd.push({ 'ap': 'cpsh' }, { 'server': 'a2plcpnl0235' }) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script>
 <script src='../../../img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script>
+
+@*Đây là script của View More*@
+<script>
+    $(document).ready(function () {
+        // Configure/customize these variables.
+        var showChar = 3;  // How many characters are shown by default
+        var ellipsestext = "...";
+        var moretext = "Show more >";
+        var lesstext = "Show less";
+
+
+        $('.more').each(function () {
+            var content = $(this).html();
+
+            if (content.length > showChar) {
+
+                var c = content.substr(0, showChar);
+                var h = content.substr(showChar, content.length - showChar);
+
+                var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+                $(this).html(html);
+            }
+
+        });
+
+        $(".morelink").click(function () {
+            if ($(this).hasClass("less")) {
+                $(this).removeClass("less");
+                $(this).html(moretext);
+            } else {
+                $(this).addClass("less");
+                $(this).html(lesstext);
+            }
+            $(this).parent().prev().toggle();
+            $(this).prev().toggle();
+            return false;
+        });
+    });
+</script>
 <!-- Mirrored from gambolthemes.net/html/workwise/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Oct 2018 15:49:57 GMT -->
 </html>
