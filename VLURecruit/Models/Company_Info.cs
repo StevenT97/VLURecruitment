@@ -18,6 +18,7 @@ namespace VLURecruit.Models
         public Company_Info()
         {
             this.Recruitments = new HashSet<Recruitment>();
+            this.User_In_Company = new HashSet<User_In_Company>();
         }
     
         public int Id { get; set; }
@@ -26,16 +27,14 @@ namespace VLURecruit.Models
         public string website_Company { get; set; }
         public string Logo_Comany { get; set; }
         public string Field_Company { get; set; }
-        public Nullable<System.DateTime> Created_at { get; set; }
+        public System.DateTime Created_at { get; set; }
         public Nullable<System.DateTime> Update_at { get; set; }
         public string Slug_Company { get; set; }
         public Nullable<int> Is_hot_Company { get; set; }
-        public int Id_Status { get; set; }
-        public string Id_Account { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
-        public virtual Status_Account Status_Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recruitment> Recruitments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_In_Company> User_In_Company { get; set; }
     }
 }

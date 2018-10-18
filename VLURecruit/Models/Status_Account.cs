@@ -17,19 +17,19 @@ namespace VLURecruit.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Status_Account()
         {
-            this.Company_Info = new HashSet<Company_Info>();
             this.Staff_Info = new HashSet<Staff_Info>();
             this.Student_Info = new HashSet<Student_Info>();
+            this.User_In_Company = new HashSet<User_In_Company>();
         }
     
         public int Id { get; set; }
         public string Name_Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Company_Info> Company_Info { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Staff_Info> Staff_Info { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student_Info> Student_Info { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_In_Company> User_In_Company { get; set; }
     }
 }

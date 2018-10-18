@@ -11,7 +11,7 @@ namespace VLURecruit.Areas.Company.Controllers
 {
     public class RecruitmentController : Controller
     {
-        jobeeEntities db = new jobeeEntities();
+        EJobEntities db = new EJobEntities();
         // GET: Company/Recruitment
         public ActionResult Index()
         {
@@ -32,11 +32,13 @@ namespace VLURecruit.Areas.Company.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Districts_id = new SelectList(db.Districts, "ID", "District_Name");
+                ViewBag.recttag = new SelectList(db.Tags, "ID", "Name_Tag");
                 return View(data);
             }
             //create new recruitment
             var userId = User.Identity.GetUserId();
-            data.Company_id = db.Company_Info.FirstOrDefault(x => x.Id_Account == userId).Id;
+            data.Company_id = db.User_In_Company.FirstOrDefault(x => x.Account_id == userId).Company_id;
             Recruitment nRec = new Recruitment
             {
 
@@ -46,7 +48,9 @@ namespace VLURecruit.Areas.Company.Controllers
                 Districts_id = data.Districts_id,
                 title = data.title,
                 Expire_date = data.Expire_date,
-                Salary = data.Salary,
+                Recruiting_dates = data.Recruiting_dates,
+                Salary_from = data.Salary_from,
+                Salary_to=data.Salary_to,
                 Is_Full_Time = data.Is_Full_Time,
                 Is_Part_Time = data.Is_Part_Time,
                 Is_Intership = data.Is_Intership,

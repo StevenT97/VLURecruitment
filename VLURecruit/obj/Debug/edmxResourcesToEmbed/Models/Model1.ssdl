@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="jobeeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="EJobModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="__MigrationHistory">
     <Key>
       <PropertyRef Name="MigrationId" />
@@ -66,17 +66,15 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name_Company" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name_Company" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Introduce_Company" Type="nvarchar" MaxLength="200" />
     <Property Name="website_Company" Type="varchar" MaxLength="50" />
     <Property Name="Logo_Comany" Type="varchar" MaxLength="50" />
     <Property Name="Field_Company" Type="nvarchar" MaxLength="50" />
-    <Property Name="Created_at" Type="datetime" />
+    <Property Name="Created_at" Type="datetime" Nullable="false" />
     <Property Name="Update_at" Type="datetime" />
-    <Property Name="Slug_Company" Type="nvarchar" MaxLength="50" />
+    <Property Name="Slug_Company" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Is_hot_Company" Type="int" />
-    <Property Name="Id_Status" Type="int" Nullable="false" />
-    <Property Name="Id_Account" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <EntityType Name="Districts">
     <Key>
@@ -90,28 +88,30 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="title" Type="nvarchar(max)" />
-    <Property Name="Salary" Type="int" />
-    <Property Name="Nums_view" Type="int" />
-    <Property Name="Expire_date" Type="datetime" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Salary_from" Type="int" />
+    <Property Name="Salary_to" Type="int" />
+    <Property Name="Nums_view" Type="int" Nullable="false" />
+    <Property Name="Expire_date" Type="datetime" Nullable="false" />
+    <Property Name="Recruiting_dates" Type="datetime" Nullable="false" />
     <Property Name="Districts_id" Type="int" Nullable="false" />
     <Property Name="Is_Full_Time" Type="bit" Nullable="false" />
     <Property Name="Is_Part_Time" Type="bit" Nullable="false" />
     <Property Name="Is_Intership" Type="bit" Nullable="false" />
     <Property Name="Company_id" Type="int" Nullable="false" />
     <Property Name="Status_id" Type="int" Nullable="false" />
-    <Property Name="Created_date" Type="datetime" />
+    <Property Name="Created_date" Type="datetime" Nullable="false" />
     <Property Name="Updated_date" Type="datetime" />
     <Property Name="Job_Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Required_Skills" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Job_Benefits" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Job_Optional" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Job_Optional" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Staff_Info">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Staff_Name" Type="nvarchar" MaxLength="50" />
     <Property Name="Staff_PhoneNumber" Type="nchar" MaxLength="10" />
     <Property Name="Staff_Create_at" Type="datetime" />
@@ -123,7 +123,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name_Status" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="Status_Recruitment">
@@ -137,7 +137,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Student_Name" Type="nvarchar" MaxLength="50" />
     <Property Name="Student_Birthday" Type="date" />
     <Property Name="Student_Gender" Type="bit" />
@@ -178,30 +178,15 @@
     <Property Name="Id_Recruitment" Type="int" Nullable="false" />
     <Property Name="Craeted_date" Type="datetime" />
   </EntityType>
-  <Association Name="FK_Company_Info_AspNetUsers">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-    <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Company_Info">
-        <PropertyRef Name="Id_Account" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Company_Info_Status_Account">
-    <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
-    <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Status_Account">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Company_Info">
-        <PropertyRef Name="Id_Status" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="User_In_Company">
+    <Key>
+      <PropertyRef Name="Account_id" />
+      <PropertyRef Name="Company_id" />
+    </Key>
+    <Property Name="Account_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Company_id" Type="int" Nullable="false" />
+    <Property Name="Status_id" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -366,7 +351,43 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="jobeeModelStoreContainer">
+  <Association Name="FK_User_In_Company_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="User_In_Company" Type="Self.User_In_Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User_In_Company">
+        <PropertyRef Name="Account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_In_Company_Company_Info">
+    <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="1" />
+    <End Role="User_In_Company" Type="Self.User_In_Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company_Info">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User_In_Company">
+        <PropertyRef Name="Company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_In_Company_Status_Account">
+    <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
+    <End Role="User_In_Company" Type="Self.User_In_Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status_Account">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User_In_Company">
+        <PropertyRef Name="Status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EJobModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -383,14 +404,7 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tags_Recruitments" EntityType="Self.Tags_Recruitments" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Company_Info_AspNetUsers" Association="Self.FK_Company_Info_AspNetUsers">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="Company_Info" EntitySet="Company_Info" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Company_Info_Status_Account" Association="Self.FK_Company_Info_Status_Account">
-      <End Role="Status_Account" EntitySet="Status_Account" />
-      <End Role="Company_Info" EntitySet="Company_Info" />
-    </AssociationSet>
+    <EntitySet Name="User_In_Company" EntityType="Self.User_In_Company" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -442,6 +456,18 @@
     <AssociationSet Name="FK_Tags_Recruitments_Tags" Association="Self.FK_Tags_Recruitments_Tags">
       <End Role="Tags" EntitySet="Tags" />
       <End Role="Tags_Recruitments" EntitySet="Tags_Recruitments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_In_Company_AspNetUsers" Association="Self.FK_User_In_Company_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="User_In_Company" EntitySet="User_In_Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_In_Company_Company_Info" Association="Self.FK_User_In_Company_Company_Info">
+      <End Role="Company_Info" EntitySet="Company_Info" />
+      <End Role="User_In_Company" EntitySet="User_In_Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_In_Company_Status_Account" Association="Self.FK_User_In_Company_Status_Account">
+      <End Role="Status_Account" EntitySet="Status_Account" />
+      <End Role="User_In_Company" EntitySet="User_In_Company" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -450,7 +450,7 @@ namespace VLURecruit.Controllers
         //create student_info
         public bool CreateStudent(ApplicationUser user)
         {
-            using (jobeeEntities db = new jobeeEntities())
+            using (EJobEntities db = new EJobEntities())
             {
                 Student_Info nStudent = new Student_Info
                 {

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\K21T2-CAP\.NET System\VLURecruit\Models\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\Source_VS\New folder (2)\VLURecruit\Models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

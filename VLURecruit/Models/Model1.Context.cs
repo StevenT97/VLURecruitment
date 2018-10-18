@@ -13,10 +13,10 @@ namespace VLURecruit.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class jobeeEntities : DbContext
+    public partial class EJobEntities : DbContext
     {
-        public jobeeEntities()
-            : base("name=jobeeEntities")
+        public EJobEntities()
+            : base("name=EJobEntities")
         {
         }
     
@@ -40,5 +40,6 @@ namespace VLURecruit.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<Tags_Recruitments> Tags_Recruitments { get; set; }
+        public virtual DbSet<User_In_Company> User_In_Company { get; set; }
     }
 }

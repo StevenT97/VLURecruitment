@@ -4,36 +4,38 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f4d38c7780f446ddb972c99fb352558a" Name="Diagram1">
-        <EntityTypeShape EntityType="jobeeModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.AspNetRole" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.AspNetUser" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Company_Info" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.District" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Recruitment" Width="1.5" PointX="10.5" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Staff_Info" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Status_Account" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Status_Recruitment" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Student_Info" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Tag" Width="1.5" PointX="10.5" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="jobeeModel.Tags_Recruitments" Width="1.5" PointX="12.75" PointY="9.875" IsExpanded="true" />
-        <AssociationConnector Association="jobeeModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Company_Info_AspNetUsers" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Staff_Info_AspNetUsers" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Student_Info_AspNetUsers" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Company_Info_Status_Account" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Recruitments_Company_Info" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Recruitments_Districts" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Recruitments_Status_Recruitment" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Tags_Recruitments_Recruitments" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Staff_Info_Status_Account" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Student_Info_Status_Account" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.FK_Tags_Recruitments_Tags" ManuallyRouted="false" />
-        <AssociationConnector Association="jobeeModel.AspNetUserRoles" ManuallyRouted="false" />
+      <Diagram DiagramId="8df780b76dae4ee3909aa9d5260aff25" Name="Diagram1">
+        <EntityTypeShape EntityType="EJobModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.AspNetRole" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.AspNetUser" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Company_Info" Width="1.5" PointX="6" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.District" Width="1.5" PointX="9" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Recruitment" Width="1.5" PointX="11.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Staff_Info" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Status_Account" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Status_Recruitment" Width="1.5" PointX="9" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Student_Info" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Tag" Width="1.5" PointX="11.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Tags_Recruitments" Width="1.5" PointX="13.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.User_In_Company" Width="1.5" PointX="8.25" PointY="12.25" IsExpanded="true" />
+        <AssociationConnector Association="EJobModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Staff_Info_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Student_Info_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_User_In_Company_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Recruitments_Company_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_User_In_Company_Company_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Recruitments_Districts" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Recruitments_Status_Recruitment" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Tags_Recruitments_Recruitments" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Staff_Info_Status_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Student_Info_Status_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_User_In_Company_Status_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Tags_Recruitments_Tags" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

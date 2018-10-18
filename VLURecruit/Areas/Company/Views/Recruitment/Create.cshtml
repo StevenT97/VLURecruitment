@@ -24,13 +24,28 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Salary_from, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Salary_from, new { htmlAttributes = new { @class = "form-control", min="0" } })
+                @Html.ValidationMessageFor(model => model.Salary_from, "", new { @class = "text-danger" })
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.Salary_to, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Salary_to, new { htmlAttributes = new { @class = "form-control", min = "0" } })
+                @Html.ValidationMessageFor(model => model.Salary_to, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Recruiting_dates, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Recruiting_dates, new { htmlAttributes = new { @class = "datepicker" } })
+                @Html.ValidationMessageFor(model => model.Recruiting_dates, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Expire_date, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -40,10 +55,11 @@
             </div>
         </div>
 
+
         <div class="form-group">
             @Html.LabelFor(model => model.Districts_id, "Districts_id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Districts_id", null, String.Empty, htmlAttributes: new { @class = "form-control", required = "required" })
+                @Html.DropDownList("Districts_id", null, String.Empty, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Districts_id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -150,8 +166,7 @@
             ],
             height: 150
         });
-        $("#Tuy_Chon").attr('required', true)
-
+        
         $("#Phuc_Loi").summernote({
             toolbar: [
 
@@ -161,8 +176,7 @@
             height: 150
 
         });
-        $("#Phuc_Loi").attr('required', true).alert("Hello")
-
+        
         $("#Ky_Nang_Cong_Viec").summernote({
             toolbar: [
 		    // [groupName, [list of button]]
@@ -171,8 +185,7 @@
             ],
             height: 150
         });
-        $("#Ky_Nang_Cong_Viec").attr('required', true)
-
+        
         $("#Mo_ta_Chi_Tiet").summernote({
             toolbar: [
 		    // [groupName, [list of button]]
@@ -181,8 +194,7 @@
             ],
             height: 150
         });
-        $("#Mo_ta_Chi_Tiet").attr('required', true)
-
+        
 
     </script>
 }

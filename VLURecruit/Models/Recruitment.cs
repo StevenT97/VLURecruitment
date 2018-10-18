@@ -22,16 +22,18 @@ namespace VLURecruit.Models
     
         public int Id { get; set; }
         public string title { get; set; }
-        public Nullable<int> Salary { get; set; }
-        public Nullable<int> Nums_view { get; set; }
-        public Nullable<System.DateTime> Expire_date { get; set; }
+        public Nullable<int> Salary_from { get; set; }
+        public Nullable<int> Salary_to { get; set; }
+        public int Nums_view { get; set; }
+        public System.DateTime Expire_date { get; set; }
+        public System.DateTime Recruiting_dates { get; set; }
         public int Districts_id { get; set; }
         public bool Is_Full_Time { get; set; }
         public bool Is_Part_Time { get; set; }
         public bool Is_Intership { get; set; }
         public int Company_id { get; set; }
         public int Status_id { get; set; }
-        public Nullable<System.DateTime> Created_date { get; set; }
+        public System.DateTime Created_date { get; set; }
         public Nullable<System.DateTime> Updated_date { get; set; }
         public string Job_Description { get; set; }
         public string Required_Skills { get; set; }

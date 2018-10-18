@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="jobeeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EJobModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -71,17 +71,15 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name_Company" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name_Company" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Introduce_Company" Type="nvarchar" MaxLength="200" />
           <Property Name="website_Company" Type="varchar" MaxLength="50" />
           <Property Name="Logo_Comany" Type="varchar" MaxLength="50" />
           <Property Name="Field_Company" Type="nvarchar" MaxLength="50" />
-          <Property Name="Created_at" Type="datetime" />
+          <Property Name="Created_at" Type="datetime" Nullable="false" />
           <Property Name="Update_at" Type="datetime" />
-          <Property Name="Slug_Company" Type="nvarchar" MaxLength="50" />
+          <Property Name="Slug_Company" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Is_hot_Company" Type="int" />
-          <Property Name="Id_Status" Type="int" Nullable="false" />
-          <Property Name="Id_Account" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="Districts">
           <Key>
@@ -95,28 +93,30 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="title" Type="nvarchar(max)" />
-          <Property Name="Salary" Type="int" />
-          <Property Name="Nums_view" Type="int" />
-          <Property Name="Expire_date" Type="datetime" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Salary_from" Type="int" />
+          <Property Name="Salary_to" Type="int" />
+          <Property Name="Nums_view" Type="int" Nullable="false" />
+          <Property Name="Expire_date" Type="datetime" Nullable="false" />
+          <Property Name="Recruiting_dates" Type="datetime" Nullable="false" />
           <Property Name="Districts_id" Type="int" Nullable="false" />
           <Property Name="Is_Full_Time" Type="bit" Nullable="false" />
           <Property Name="Is_Part_Time" Type="bit" Nullable="false" />
           <Property Name="Is_Intership" Type="bit" Nullable="false" />
           <Property Name="Company_id" Type="int" Nullable="false" />
           <Property Name="Status_id" Type="int" Nullable="false" />
-          <Property Name="Created_date" Type="datetime" />
+          <Property Name="Created_date" Type="datetime" Nullable="false" />
           <Property Name="Updated_date" Type="datetime" />
           <Property Name="Job_Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Required_Skills" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Job_Benefits" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Job_Optional" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Job_Optional" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Staff_Info">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Staff_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Staff_PhoneNumber" Type="nchar" MaxLength="10" />
           <Property Name="Staff_Create_at" Type="datetime" />
@@ -128,7 +128,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name_Status" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Status_Recruitment">
@@ -142,7 +142,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Student_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Student_Birthday" Type="date" />
           <Property Name="Student_Gender" Type="bit" />
@@ -183,30 +183,15 @@
           <Property Name="Id_Recruitment" Type="int" Nullable="false" />
           <Property Name="Craeted_date" Type="datetime" />
         </EntityType>
-        <Association Name="FK_Company_Info_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Company_Info">
-              <PropertyRef Name="Id_Account" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Company_Info_Status_Account">
-          <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
-          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Status_Account">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Company_Info">
-              <PropertyRef Name="Id_Status" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="User_In_Company">
+          <Key>
+            <PropertyRef Name="Account_id" />
+            <PropertyRef Name="Company_id" />
+          </Key>
+          <Property Name="Account_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Company_id" Type="int" Nullable="false" />
+          <Property Name="Status_id" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -371,7 +356,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="jobeeModelStoreContainer">
+        <Association Name="FK_User_In_Company_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="User_In_Company" Type="Self.User_In_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_In_Company">
+              <PropertyRef Name="Account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_In_Company_Company_Info">
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="1" />
+          <End Role="User_In_Company" Type="Self.User_In_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company_Info">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_In_Company">
+              <PropertyRef Name="Company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_In_Company_Status_Account">
+          <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
+          <End Role="User_In_Company" Type="Self.User_In_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_In_Company">
+              <PropertyRef Name="Status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EJobModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -388,14 +409,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tags_Recruitments" EntityType="Self.Tags_Recruitments" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Company_Info_AspNetUsers" Association="Self.FK_Company_Info_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Company_Info" EntitySet="Company_Info" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Company_Info_Status_Account" Association="Self.FK_Company_Info_Status_Account">
-            <End Role="Status_Account" EntitySet="Status_Account" />
-            <End Role="Company_Info" EntitySet="Company_Info" />
-          </AssociationSet>
+          <EntitySet Name="User_In_Company" EntityType="Self.User_In_Company" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -448,11 +462,24 @@
             <End Role="Tags" EntitySet="Tags" />
             <End Role="Tags_Recruitments" EntitySet="Tags_Recruitments" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_In_Company_AspNetUsers" Association="Self.FK_User_In_Company_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="User_In_Company" EntitySet="User_In_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_In_Company_Company_Info" Association="Self.FK_User_In_Company_Company_Info">
+            <End Role="Company_Info" EntitySet="Company_Info" />
+            <End Role="User_In_Company" EntitySet="User_In_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_In_Company_Status_Account" Association="Self.FK_User_In_Company_Status_Account">
+            <End Role="Status_Account" EntitySet="Status_Account" />
+            <End Role="User_In_Company" EntitySet="User_In_Company" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="jobeeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EJobModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -510,9 +537,9 @@
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="Company_Info" Relationship="Self.FK_Company_Info_AspNetUsers" FromRole="AspNetUsers" ToRole="Company_Info" />
           <NavigationProperty Name="Staff_Info" Relationship="Self.FK_Staff_Info_AspNetUsers" FromRole="AspNetUsers" ToRole="Staff_Info" />
           <NavigationProperty Name="Student_Info" Relationship="Self.FK_Student_Info_AspNetUsers" FromRole="AspNetUsers" ToRole="Student_Info" />
+          <NavigationProperty Name="User_In_Company" Relationship="Self.FK_User_In_Company_AspNetUsers" FromRole="AspNetUsers" ToRole="User_In_Company" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="Company_Info">
@@ -520,20 +547,17 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Introduce_Company" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="website_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Logo_Comany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Field_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Created_at" Type="DateTime" Precision="3" />
+          <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Update_at" Type="DateTime" Precision="3" />
-          <Property Name="Slug_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Slug_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Is_hot_Company" Type="Int32" />
-          <Property Name="Id_Status" Type="Int32" Nullable="false" />
-          <Property Name="Id_Account" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Company_Info_AspNetUsers" FromRole="Company_Info" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Status_Account" Relationship="Self.FK_Company_Info_Status_Account" FromRole="Company_Info" ToRole="Status_Account" />
           <NavigationProperty Name="Recruitments" Relationship="Self.FK_Recruitments_Company_Info" FromRole="Company_Info" ToRole="Recruitments" />
+          <NavigationProperty Name="User_In_Company" Relationship="Self.FK_User_In_Company_Company_Info" FromRole="Company_Info" ToRole="User_In_Company" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -548,22 +572,24 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Salary" Type="Int32" />
-          <Property Name="Nums_view" Type="Int32" />
-          <Property Name="Expire_date" Type="DateTime" Precision="3" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salary_from" Type="Int32" />
+          <Property Name="Salary_to" Type="Int32" />
+          <Property Name="Nums_view" Type="Int32" Nullable="false" />
+          <Property Name="Expire_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Recruiting_dates" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Districts_id" Type="Int32" Nullable="false" />
           <Property Name="Is_Full_Time" Type="Boolean" Nullable="false" />
           <Property Name="Is_Part_Time" Type="Boolean" Nullable="false" />
           <Property Name="Is_Intership" Type="Boolean" Nullable="false" />
           <Property Name="Company_id" Type="Int32" Nullable="false" />
           <Property Name="Status_id" Type="Int32" Nullable="false" />
-          <Property Name="Created_date" Type="DateTime" Precision="3" />
+          <Property Name="Created_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Updated_date" Type="DateTime" Precision="3" />
           <Property Name="Job_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Required_Skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Job_Benefits" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Job_Optional" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Job_Optional" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Company_Info" Relationship="Self.FK_Recruitments_Company_Info" FromRole="Recruitments" ToRole="Company_Info" />
           <NavigationProperty Name="District" Relationship="Self.FK_Recruitments_Districts" FromRole="Recruitments" ToRole="Districts" />
           <NavigationProperty Name="Status_Recruitment" Relationship="Self.FK_Recruitments_Status_Recruitment" FromRole="Recruitments" ToRole="Status_Recruitment" />
@@ -573,7 +599,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Staff_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Staff_PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Staff_Create_at" Type="DateTime" Precision="3" />
@@ -587,11 +613,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name_Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Company_Info" Relationship="Self.FK_Company_Info_Status_Account" FromRole="Status_Account" ToRole="Company_Info" />
           <NavigationProperty Name="Staff_Info" Relationship="Self.FK_Staff_Info_Status_Account" FromRole="Status_Account" ToRole="Staff_Info" />
           <NavigationProperty Name="Student_Info" Relationship="Self.FK_Student_Info_Status_Account" FromRole="Status_Account" ToRole="Student_Info" />
+          <NavigationProperty Name="User_In_Company" Relationship="Self.FK_User_In_Company_Status_Account" FromRole="Status_Account" ToRole="User_In_Company" />
         </EntityType>
         <EntityType Name="Status_Recruitment">
           <Key>
@@ -605,7 +631,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Student_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Student_Birthday" Type="DateTime" Precision="0" />
           <Property Name="Student_Gender" Type="Boolean" />
@@ -651,6 +677,18 @@
           <NavigationProperty Name="Recruitment" Relationship="Self.FK_Tags_Recruitments_Recruitments" FromRole="Tags_Recruitments" ToRole="Recruitments" />
           <NavigationProperty Name="Tag" Relationship="Self.FK_Tags_Recruitments_Tags" FromRole="Tags_Recruitments" ToRole="Tags" />
         </EntityType>
+        <EntityType Name="User_In_Company">
+          <Key>
+            <PropertyRef Name="Account_id" />
+            <PropertyRef Name="Company_id" />
+          </Key>
+          <Property Name="Account_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Company_id" Type="Int32" Nullable="false" />
+          <Property Name="Status_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_User_In_Company_AspNetUsers" FromRole="User_In_Company" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Company_Info" Relationship="Self.FK_User_In_Company_Company_Info" FromRole="User_In_Company" ToRole="Company_Info" />
+          <NavigationProperty Name="Status_Account" Relationship="Self.FK_User_In_Company_Status_Account" FromRole="User_In_Company" ToRole="Status_Account" />
+        </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -679,18 +717,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Company_Info_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
-          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Company_Info">
-              <PropertyRef Name="Id_Account" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Staff_Info_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
           <End Role="Staff_Info" Type="Self.Staff_Info" Multiplicity="*" />
@@ -715,15 +741,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Company_Info_Status_Account">
-          <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
-          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
+        <Association Name="FK_User_In_Company_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="User_In_Company" Type="Self.User_In_Company" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status_Account">
+            <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Company_Info">
-              <PropertyRef Name="Id_Status" />
+            <Dependent Role="User_In_Company">
+              <PropertyRef Name="Account_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -735,6 +761,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Recruitments">
+              <PropertyRef Name="Company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_In_Company_Company_Info">
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="1" />
+          <End Role="User_In_Company" Type="Self.User_In_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company_Info">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_In_Company">
               <PropertyRef Name="Company_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -799,6 +837,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_In_Company_Status_Account">
+          <End Role="Status_Account" Type="Self.Status_Account" Multiplicity="1" />
+          <End Role="User_In_Company" Type="Self.User_In_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_In_Company">
+              <PropertyRef Name="Status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Tags_Recruitments_Tags">
           <End Role="Tags" Type="Self.Tag" Multiplicity="1" />
           <End Role="Tags_Recruitments" Type="Self.Tags_Recruitments" Multiplicity="*" />
@@ -815,7 +865,7 @@
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="jobeeEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EJobEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
@@ -831,6 +881,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Tags" EntityType="Self.Tag" />
           <EntitySet Name="Tags_Recruitments" EntityType="Self.Tags_Recruitments" />
+          <EntitySet Name="User_In_Company" EntityType="Self.User_In_Company" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -838,10 +889,6 @@
           <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Company_Info_AspNetUsers" Association="Self.FK_Company_Info_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Company_Info" EntitySet="Company_Info" />
           </AssociationSet>
           <AssociationSet Name="FK_Staff_Info_AspNetUsers" Association="Self.FK_Staff_Info_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -851,13 +898,17 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Student_Info" EntitySet="Student_Info" />
           </AssociationSet>
-          <AssociationSet Name="FK_Company_Info_Status_Account" Association="Self.FK_Company_Info_Status_Account">
-            <End Role="Status_Account" EntitySet="Status_Account" />
-            <End Role="Company_Info" EntitySet="Company_Info" />
+          <AssociationSet Name="FK_User_In_Company_AspNetUsers" Association="Self.FK_User_In_Company_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="User_In_Company" EntitySet="User_In_Company" />
           </AssociationSet>
           <AssociationSet Name="FK_Recruitments_Company_Info" Association="Self.FK_Recruitments_Company_Info">
             <End Role="Company_Info" EntitySet="Company_Info" />
             <End Role="Recruitments" EntitySet="Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_In_Company_Company_Info" Association="Self.FK_User_In_Company_Company_Info">
+            <End Role="Company_Info" EntitySet="Company_Info" />
+            <End Role="User_In_Company" EntitySet="User_In_Company" />
           </AssociationSet>
           <AssociationSet Name="FK_Recruitments_Districts" Association="Self.FK_Recruitments_Districts">
             <End Role="Districts" EntitySet="Districts" />
@@ -879,6 +930,10 @@
             <End Role="Status_Account" EntitySet="Status_Account" />
             <End Role="Student_Info" EntitySet="Student_Info" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_In_Company_Status_Account" Association="Self.FK_User_In_Company_Status_Account">
+            <End Role="Status_Account" EntitySet="Status_Account" />
+            <End Role="User_In_Company" EntitySet="User_In_Company" />
+          </AssociationSet>
           <AssociationSet Name="FK_Tags_Recruitments_Tags" Association="Self.FK_Tags_Recruitments_Tags">
             <End Role="Tags" EntitySet="Tags" />
             <End Role="Tags_Recruitments" EntitySet="Tags_Recruitments" />
@@ -893,9 +948,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="jobeeModelStoreContainer" CdmEntityContainer="jobeeEntities">
+        <EntityContainerMapping StorageEntityContainer="EJobModelStoreContainer" CdmEntityContainer="EJobEntities">
           <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="jobeeModel.C__MigrationHistory">
+            <EntityTypeMapping TypeName="EJobModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
                 <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
                 <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
@@ -905,7 +960,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="jobeeModel.AspNetRole">
+            <EntityTypeMapping TypeName="EJobModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -913,7 +968,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="jobeeModel.AspNetUserClaim">
+            <EntityTypeMapping TypeName="EJobModel.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -923,7 +978,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="jobeeModel.AspNetUserLogin">
+            <EntityTypeMapping TypeName="EJobModel.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -932,7 +987,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="jobeeModel.AspNetUser">
+            <EntityTypeMapping TypeName="EJobModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -950,7 +1005,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Company_Info">
-            <EntityTypeMapping TypeName="jobeeModel.Company_Info">
+            <EntityTypeMapping TypeName="EJobModel.Company_Info">
               <MappingFragment StoreEntitySet="Company_Info">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name_Company" ColumnName="Name_Company" />
@@ -962,13 +1017,11 @@
                 <ScalarProperty Name="Update_at" ColumnName="Update_at" />
                 <ScalarProperty Name="Slug_Company" ColumnName="Slug_Company" />
                 <ScalarProperty Name="Is_hot_Company" ColumnName="Is_hot_Company" />
-                <ScalarProperty Name="Id_Status" ColumnName="Id_Status" />
-                <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Districts">
-            <EntityTypeMapping TypeName="jobeeModel.District">
+            <EntityTypeMapping TypeName="EJobModel.District">
               <MappingFragment StoreEntitySet="Districts">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="District_Name" ColumnName="District_Name" />
@@ -976,13 +1029,15 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Recruitments">
-            <EntityTypeMapping TypeName="jobeeModel.Recruitment">
+            <EntityTypeMapping TypeName="EJobModel.Recruitment">
               <MappingFragment StoreEntitySet="Recruitments">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Salary_from" ColumnName="Salary_from" />
+                <ScalarProperty Name="Salary_to" ColumnName="Salary_to" />
                 <ScalarProperty Name="Nums_view" ColumnName="Nums_view" />
                 <ScalarProperty Name="Expire_date" ColumnName="Expire_date" />
+                <ScalarProperty Name="Recruiting_dates" ColumnName="Recruiting_dates" />
                 <ScalarProperty Name="Districts_id" ColumnName="Districts_id" />
                 <ScalarProperty Name="Is_Full_Time" ColumnName="Is_Full_Time" />
                 <ScalarProperty Name="Is_Part_Time" ColumnName="Is_Part_Time" />
@@ -999,7 +1054,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Staff_Info">
-            <EntityTypeMapping TypeName="jobeeModel.Staff_Info">
+            <EntityTypeMapping TypeName="EJobModel.Staff_Info">
               <MappingFragment StoreEntitySet="Staff_Info">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Staff_Name" ColumnName="Staff_Name" />
@@ -1012,7 +1067,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Status_Account">
-            <EntityTypeMapping TypeName="jobeeModel.Status_Account">
+            <EntityTypeMapping TypeName="EJobModel.Status_Account">
               <MappingFragment StoreEntitySet="Status_Account">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name_Status" ColumnName="Name_Status" />
@@ -1020,7 +1075,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Status_Recruitment">
-            <EntityTypeMapping TypeName="jobeeModel.Status_Recruitment">
+            <EntityTypeMapping TypeName="EJobModel.Status_Recruitment">
               <MappingFragment StoreEntitySet="Status_Recruitment">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Status_Name" ColumnName="Status_Name" />
@@ -1028,7 +1083,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Student_Info">
-            <EntityTypeMapping TypeName="jobeeModel.Student_Info">
+            <EntityTypeMapping TypeName="EJobModel.Student_Info">
               <MappingFragment StoreEntitySet="Student_Info">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
@@ -1046,7 +1101,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="jobeeModel.sysdiagram">
+            <EntityTypeMapping TypeName="EJobModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1057,7 +1112,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tags">
-            <EntityTypeMapping TypeName="jobeeModel.Tag">
+            <EntityTypeMapping TypeName="EJobModel.Tag">
               <MappingFragment StoreEntitySet="Tags">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name_Tag" ColumnName="Name_Tag" />
@@ -1067,7 +1122,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tags_Recruitments">
-            <EntityTypeMapping TypeName="jobeeModel.Tags_Recruitments">
+            <EntityTypeMapping TypeName="EJobModel.Tags_Recruitments">
               <MappingFragment StoreEntitySet="Tags_Recruitments">
                 <ScalarProperty Name="Id_Tags" ColumnName="Id_Tags" />
                 <ScalarProperty Name="Id_Recruitment" ColumnName="Id_Recruitment" />
@@ -1075,7 +1130,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="jobeeModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+          <EntitySetMapping Name="User_In_Company">
+            <EntityTypeMapping TypeName="EJobModel.User_In_Company">
+              <MappingFragment StoreEntitySet="User_In_Company">
+                <ScalarProperty Name="Account_id" ColumnName="Account_id" />
+                <ScalarProperty Name="Company_id" ColumnName="Company_id" />
+                <ScalarProperty Name="Status_id" ColumnName="Status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="EJobModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>

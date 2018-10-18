@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="jobeeModelStoreContainer" CdmEntityContainer="jobeeEntities">
+  <EntityContainerMapping StorageEntityContainer="EJobModelStoreContainer" CdmEntityContainer="EJobEntities">
     <EntitySetMapping Name="C__MigrationHistory">
-      <EntityTypeMapping TypeName="jobeeModel.C__MigrationHistory">
+      <EntityTypeMapping TypeName="EJobModel.C__MigrationHistory">
         <MappingFragment StoreEntitySet="__MigrationHistory">
           <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
           <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
@@ -12,7 +12,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="jobeeModel.AspNetRole">
+      <EntityTypeMapping TypeName="EJobModel.AspNetRole">
         <MappingFragment StoreEntitySet="AspNetRoles">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -20,7 +20,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserClaims">
-      <EntityTypeMapping TypeName="jobeeModel.AspNetUserClaim">
+      <EntityTypeMapping TypeName="EJobModel.AspNetUserClaim">
         <MappingFragment StoreEntitySet="AspNetUserClaims">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -30,7 +30,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserLogins">
-      <EntityTypeMapping TypeName="jobeeModel.AspNetUserLogin">
+      <EntityTypeMapping TypeName="EJobModel.AspNetUserLogin">
         <MappingFragment StoreEntitySet="AspNetUserLogins">
           <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
           <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -39,7 +39,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="jobeeModel.AspNetUser">
+      <EntityTypeMapping TypeName="EJobModel.AspNetUser">
         <MappingFragment StoreEntitySet="AspNetUsers">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -57,7 +57,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Company_Info">
-      <EntityTypeMapping TypeName="jobeeModel.Company_Info">
+      <EntityTypeMapping TypeName="EJobModel.Company_Info">
         <MappingFragment StoreEntitySet="Company_Info">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name_Company" ColumnName="Name_Company" />
@@ -69,13 +69,11 @@
           <ScalarProperty Name="Update_at" ColumnName="Update_at" />
           <ScalarProperty Name="Slug_Company" ColumnName="Slug_Company" />
           <ScalarProperty Name="Is_hot_Company" ColumnName="Is_hot_Company" />
-          <ScalarProperty Name="Id_Status" ColumnName="Id_Status" />
-          <ScalarProperty Name="Id_Account" ColumnName="Id_Account" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Districts">
-      <EntityTypeMapping TypeName="jobeeModel.District">
+      <EntityTypeMapping TypeName="EJobModel.District">
         <MappingFragment StoreEntitySet="Districts">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="District_Name" ColumnName="District_Name" />
@@ -83,13 +81,15 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Recruitments">
-      <EntityTypeMapping TypeName="jobeeModel.Recruitment">
+      <EntityTypeMapping TypeName="EJobModel.Recruitment">
         <MappingFragment StoreEntitySet="Recruitments">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Salary_from" ColumnName="Salary_from" />
+          <ScalarProperty Name="Salary_to" ColumnName="Salary_to" />
           <ScalarProperty Name="Nums_view" ColumnName="Nums_view" />
           <ScalarProperty Name="Expire_date" ColumnName="Expire_date" />
+          <ScalarProperty Name="Recruiting_dates" ColumnName="Recruiting_dates" />
           <ScalarProperty Name="Districts_id" ColumnName="Districts_id" />
           <ScalarProperty Name="Is_Full_Time" ColumnName="Is_Full_Time" />
           <ScalarProperty Name="Is_Part_Time" ColumnName="Is_Part_Time" />
@@ -106,7 +106,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Staff_Info">
-      <EntityTypeMapping TypeName="jobeeModel.Staff_Info">
+      <EntityTypeMapping TypeName="EJobModel.Staff_Info">
         <MappingFragment StoreEntitySet="Staff_Info">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Staff_Name" ColumnName="Staff_Name" />
@@ -119,7 +119,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Status_Account">
-      <EntityTypeMapping TypeName="jobeeModel.Status_Account">
+      <EntityTypeMapping TypeName="EJobModel.Status_Account">
         <MappingFragment StoreEntitySet="Status_Account">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name_Status" ColumnName="Name_Status" />
@@ -127,7 +127,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Status_Recruitment">
-      <EntityTypeMapping TypeName="jobeeModel.Status_Recruitment">
+      <EntityTypeMapping TypeName="EJobModel.Status_Recruitment">
         <MappingFragment StoreEntitySet="Status_Recruitment">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Status_Name" ColumnName="Status_Name" />
@@ -135,7 +135,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Student_Info">
-      <EntityTypeMapping TypeName="jobeeModel.Student_Info">
+      <EntityTypeMapping TypeName="EJobModel.Student_Info">
         <MappingFragment StoreEntitySet="Student_Info">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
@@ -153,7 +153,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="jobeeModel.sysdiagram">
+      <EntityTypeMapping TypeName="EJobModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -164,7 +164,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tags">
-      <EntityTypeMapping TypeName="jobeeModel.Tag">
+      <EntityTypeMapping TypeName="EJobModel.Tag">
         <MappingFragment StoreEntitySet="Tags">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name_Tag" ColumnName="Name_Tag" />
@@ -174,7 +174,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tags_Recruitments">
-      <EntityTypeMapping TypeName="jobeeModel.Tags_Recruitments">
+      <EntityTypeMapping TypeName="EJobModel.Tags_Recruitments">
         <MappingFragment StoreEntitySet="Tags_Recruitments">
           <ScalarProperty Name="Id_Tags" ColumnName="Id_Tags" />
           <ScalarProperty Name="Id_Recruitment" ColumnName="Id_Recruitment" />
@@ -182,7 +182,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="AspNetUserRoles" TypeName="jobeeModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+    <EntitySetMapping Name="User_In_Company">
+      <EntityTypeMapping TypeName="EJobModel.User_In_Company">
+        <MappingFragment StoreEntitySet="User_In_Company">
+          <ScalarProperty Name="Account_id" ColumnName="Account_id" />
+          <ScalarProperty Name="Company_id" ColumnName="Company_id" />
+          <ScalarProperty Name="Status_id" ColumnName="Status_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="EJobModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
       <EndProperty Name="AspNetRoles">
         <ScalarProperty Name="Id" ColumnName="RoleId" />
       </EndProperty>

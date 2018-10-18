@@ -193,10 +193,10 @@
                                     </div>
                                     <div class="content">
                                             <h3><a href="@Url.Action("Detail","Home",new { id=item.Id})">@item.title</a><button><i class="fa fa-heart"></i></button></h3>
-                                            <p>@item.Expire_date.Value.ToString("dd/MM/yyyy")</p>
+                                            <p>@item.Expire_date.ToString("dd/MM/yyyy")</p>
                                             <ul>
                                                 <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">@item.Company_Info.Name_Company</span></li>
-                                                <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">@item.Salary VND</span></li>
+                                                <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">@item.Salary_from VND</span></li>
                                                 <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">@item.District.District_Name</span></li>
                                             </ul>
                                         

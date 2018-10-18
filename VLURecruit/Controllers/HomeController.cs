@@ -11,7 +11,7 @@ namespace VLURecruit.Controllers
     {
         public ActionResult Index()
         {
-            jobeeEntities db = new jobeeEntities();
+            EJobEntities db = new EJobEntities();
             var model = db.Recruitments.Where(x => x.Status_id==2).ToList();
             ViewBag.count = model.Count();
             return View(model);

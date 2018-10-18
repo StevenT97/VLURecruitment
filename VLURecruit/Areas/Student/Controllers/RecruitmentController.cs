@@ -10,7 +10,7 @@ namespace VLURecruit.Areas.Student.Controllers
 {
     public class RecruitmentController : Controller
     {
-        jobeeEntities model = new jobeeEntities();
+        EJobEntities model = new EJobEntities();
 
         // GET: Student/Recruitment
         public ActionResult ListOfRecruitment()
