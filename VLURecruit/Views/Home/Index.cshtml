@@ -194,6 +194,7 @@
                                     <div class="content">
                                             <h3><a href="@Url.Action("Detail","Home",new { id=item.Id})">@item.title</a><button><i class="fa fa-heart"></i></button></h3>
                                             <p>@item.Expire_date.ToString("dd/MM/yyyy")</p>
+                                        <p data-utcdate="@item.Updated_date.Value.ToString("s")"></p>
                                             <ul>
                                                 <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">@item.Company_Info.Name_Company</span></li>
                                                 <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">@item.Salary_from VND</span></li>
@@ -862,6 +863,19 @@
         </div>
     </div>
 </section>
+
+@section scripts
+    {
+     <script type="text/javascript">
+    $(function () {
+        $('[data-utcdate]').each(function () {
+            var d = moment($(this).attr('data-utcdate'));
+            $(this).html(d.fromNow());
+        });
+    });
+</script>
+    }
+
 <!--Subscribe area End here-->
 @*<h3>Log In Demo</h3>
     <button type='button' class="btn btn-success" data-toggle="modal" data-target="#popUpWindow">Open Log In Window</button>

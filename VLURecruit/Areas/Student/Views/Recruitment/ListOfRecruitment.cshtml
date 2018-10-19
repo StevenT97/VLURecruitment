@@ -2,7 +2,7 @@
 @model IEnumerable<VLURecruit.Models.Recruitment>
 @{
     Layout = null;
-    var model = new jobeeEntities();
+    var model = new EJobEntities();
 }
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@
     <link href="~/Content/CSS_ListRecruitment/slick-theme.css" rel="stylesheet" />
     <link href="~/Content/CSS_ListRecruitment/style.css" rel="stylesheet" />
     <link href="~/Content/CSS_ListRecruitment/responsive.css" rel="stylesheet" />
-
+    <script src="~/Scripts/moment.js"></script>
     <!-- All css Here -->
     <!-- All plugins css -->
     <link href="~/Content/allplugins.css" rel="stylesheet" />
@@ -370,6 +370,7 @@
                                                     <ul class="descp">
                                                         <li><span>Ho Chi Minh</span></li>
                                                         <li><span>@item.District.District_Name</span></li>
+                                                        <li><span data-utcdate="@item.Updated_date.Value.ToString("s")"></span></li>
                                                         <br />
 
                                                     </ul>
@@ -394,7 +395,7 @@
                                                             <li><a href="#" title="">Intership</a></li>
                                                         }
 
-                                                        <li><span>@item.Salary VND</span></li>
+                                                        <li><span>@item.Salary_from ~ @item.Salary_to VND</span></li>
                                                     </ul>
 
                                                     <div class="more">
@@ -716,6 +717,15 @@
             return false;
         });
     });
+
+    $(function () {
+        $('[data-utcdate]').each(function () {
+            var d = moment($(this).attr('data-utcdate'));
+            $(this).html(d.fromNow());
+        });
+    });
+
 </script>
+
 <!-- Mirrored from gambolthemes.net/html/workwise/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Oct 2018 15:49:57 GMT -->
 </html>
