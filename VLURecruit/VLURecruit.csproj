@@ -205,6 +205,7 @@
     <Compile Include="Areas\Company\Controllers\RecruitmentController.cs" />
     <Compile Include="Areas\Company\Models\Mytag.cs" />
     <Compile Include="Areas\Staff\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Staff\Controllers\RecruitmentController.cs" />
     <Compile Include="Areas\Staff\StaffAreaRegistration.cs" />
     <Compile Include="Areas\Student\Controllers\HomeController.cs" />
     <Compile Include="Areas\Student\Controllers\RecruitmentController.cs" />
@@ -395,6 +396,8 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Staff\Views\Recruitment\Approve.cshtml" />
+    <Content Include="Areas\Staff\Views\Recruitment\List.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.min.js" />
     <Content Include="Scripts\isotope.pkgd.min.js" />

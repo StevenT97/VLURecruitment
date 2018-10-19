@@ -192,11 +192,11 @@
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <!-- route('admin.recruitments.index') -->
-                                        <a href="">Danh sách tin tuyển dụng</a>
+                                        <a href="@Url.Action("List","Recruitment",new {area="Staff" })">Danh sách tin tuyển dụng</a>
                                     </li>
                                     <li>
                                         <!-- route('admin.recruitments.approve') -->
-                                        <a href="">Tin tuyển dụng chờ xác nhận</a>
+                                        <a href="@Url.Action("Approve","Recruitment",new {area="Staff" })">Tin tuyển dụng chờ xác nhận</a>
                                     </li>
                                 </ul>
                             </li>
@@ -284,11 +284,16 @@
 
 
         <!-- Page Content -->
-        @RenderBody()
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+            
+        </div>    
         <!-- /#page-wrapper -->
 
     </div>
-
+    
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script src="~/Scripts/Js_Admin/jquery.min.js"></script>
     <script src="~/Scripts/Js_Admin/bootstrap.min.js"></script>

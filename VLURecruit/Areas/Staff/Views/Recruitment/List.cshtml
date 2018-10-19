@@ -1,0 +1,84 @@
+﻿@model IEnumerable<VLURecruit.Models.Recruitment>
+
+@{
+    ViewBag.Title = "Danh sách tin tuyển dụng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    DateTime time;
+}
+
+<h2>Danh sách tin tuyển dụng</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Tiêu Đề
+        </th>
+        <th>
+            Lương
+        </th>
+        <th>
+            Ngày Bắt Đầu Nhận Hồ Sơ
+        </th>
+        <th>
+            Ngày Kết Thúc Tuyển Dụng
+        </th>
+        <th>
+            Lượt Xem
+        </th>
+        <th>
+            Công ty
+        </th>
+        <th>Ngày tạo</th>
+        <th>Trạng Thái</th>
+        <th>Thao Tác</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @if (item.Salary_from != null && item.Salary_to != null)
+                {
+                    <p>@item.Salary_from ~ @item.Salary_to</p>
+                }
+                @if (item.Salary_from != null && item.Salary_to == null)
+                {
+                    <p>@item.Salary_from ~ </p>
+                }
+                @if (item.Salary_from == null && item.Salary_to != null)
+                {
+                    <p>~ @item.Salary_to</p>
+                }
+                @if (item.Salary_from == null && item.Salary_to == null)
+                {
+                    <p>Lương Thỏa Thuận</p>
+                }
+            </td>
+            <td>
+                @item.Recruiting_dates.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @item.Expire_date.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @item.Nums_view
+            </td>
+            <td>
+                @item.Company_Info.Name_Company
+            </td>
+            <td>
+                @item.Created_date.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @item.Status_Recruitment.Status_Name
+            </td>
+            <td>
+                @*@Html.ActionLink("Xác nhận", "Approved", new { id = item.Id })*@
+                @*@Html.ActionLink("Details", "Details", new { id=item.Id })*@
+            </td>
+        </tr>
+    }
+</table>
