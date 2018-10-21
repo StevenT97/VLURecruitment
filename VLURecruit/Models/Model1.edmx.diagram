@@ -4,31 +4,41 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8df780b76dae4ee3909aa9d5260aff25" Name="Diagram1">
+      <Diagram DiagramId="4bef0ddef3ba45e39f58a68bc30f1ef2" Name="Diagram1">
         <EntityTypeShape EntityType="EJobModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EJobModel.AspNetRole" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="EJobModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="EJobModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EJobModel.AspNetUser" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="EJobModel.Company_Info" Width="1.5" PointX="6" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EJobModel.District" Width="1.5" PointX="9" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EJobModel.Recruitment" Width="1.5" PointX="11.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Company_Info" Width="1.5" PointX="6" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Company_Logos" Width="1.5" PointX="8.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Company_Photos" Width="1.5" PointX="8.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Country" Width="1.5" PointX="1.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.District" Width="1.5" PointX="6" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Province" Width="1.5" PointX="3.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Recruitment" Width="1.5" PointX="11.25" PointY="14.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EJobModel.Staff_Info" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EJobModel.Status_Account" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EJobModel.Status_Recruitment" Width="1.5" PointX="9" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Status_Recruitment" Width="1.5" PointX="9" PointY="26.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EJobModel.Student_Info" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EJobModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EJobModel.Tag" Width="1.5" PointX="11.25" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EJobModel.Tags_Recruitments" Width="1.5" PointX="13.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Tag" Width="1.5" PointX="11.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Tags_Recruitments" Width="1.5" PointX="13.5" PointY="16.5" IsExpanded="true" />
         <EntityTypeShape EntityType="EJobModel.User_In_Company" Width="1.5" PointX="8.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EJobModel.Ward" Width="1.5" PointX="8.25" PointY="18.75" IsExpanded="true" />
         <AssociationConnector Association="EJobModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="EJobModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="EJobModel.FK_Staff_Info_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="EJobModel.FK_Student_Info_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="EJobModel.FK_User_In_Company_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Company_Info_Provinces" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Company_Logos_Company_Info" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Company_Photos_Company_Info" ManuallyRouted="false" />
         <AssociationConnector Association="EJobModel.FK_Recruitments_Company_Info" ManuallyRouted="false" />
         <AssociationConnector Association="EJobModel.FK_User_In_Company_Company_Info" ManuallyRouted="false" />
-        <AssociationConnector Association="EJobModel.FK_Recruitments_Districts" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Province_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_District_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Recruitments_District_Fulls" ManuallyRouted="false" />
+        <AssociationConnector Association="EJobModel.FK_Ward_District" ManuallyRouted="false" />
         <AssociationConnector Association="EJobModel.FK_Recruitments_Status_Recruitment" ManuallyRouted="false" />
         <AssociationConnector Association="EJobModel.FK_Tags_Recruitments_Recruitments" ManuallyRouted="false" />
         <AssociationConnector Association="EJobModel.FK_Staff_Info_Status_Account" ManuallyRouted="false" />

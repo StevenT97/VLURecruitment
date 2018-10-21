@@ -31,15 +31,19 @@ namespace VLURecruit.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Company_Info> Company_Info { get; set; }
+        public virtual DbSet<Company_Logos> Company_Logos { get; set; }
+        public virtual DbSet<Company_Photos> Company_Photos { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<District> Districts { get; set; }
+        public virtual DbSet<Province> Provinces { get; set; }
         public virtual DbSet<Recruitment> Recruitments { get; set; }
         public virtual DbSet<Staff_Info> Staff_Info { get; set; }
         public virtual DbSet<Status_Account> Status_Account { get; set; }
         public virtual DbSet<Status_Recruitment> Status_Recruitment { get; set; }
         public virtual DbSet<Student_Info> Student_Info { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<Tags_Recruitments> Tags_Recruitments { get; set; }
         public virtual DbSet<User_In_Company> User_In_Company { get; set; }
+        public virtual DbSet<Ward> Wards { get; set; }
     }
 }

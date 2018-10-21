@@ -73,7 +73,7 @@
                 @item.Created_date.ToString("dd/MM/yyyy")
             </td>
             <td>
-                @item.Status_Recruitment.Status_Name
+                <a href="@Url.Action("Show_Hide", "Recruitment",new { id = item.Id, area= "Staff"})">@item.Is_Show</a>
             </td>
             <td>
                 @*@Html.ActionLink("Xác nhận", "Approved", new { id = item.Id })*@

@@ -12,28 +12,34 @@ namespace VLURecruit.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class District
+    public partial class Country
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public District()
+        public Country()
         {
-            this.Recruitments = new HashSet<Recruitment>();
-            this.Wards = new HashSet<Ward>();
+            this.Provinces = new HashSet<Province>();
         }
     
         public int Id { get; set; }
-        public string District_Name { get; set; }
-        public string Type { get; set; }
-        public string LatiLongTude { get; set; }
-        public int ProvinceId { get; set; }
+        public string CountryCode { get; set; }
+        public string CommonName { get; set; }
+        public string FormalName { get; set; }
+        public string CountryType { get; set; }
+        public string CountrySubType { get; set; }
+        public string Sovereignty { get; set; }
+        public string Capital { get; set; }
+        public string CurrencyCode { get; set; }
+        public string CurrencyName { get; set; }
+        public string TelephoneCode { get; set; }
+        public string CountryCode3 { get; set; }
+        public string CountryNumber { get; set; }
+        public string InternetCountryCode { get; set; }
         public Nullable<int> SortOrder { get; set; }
         public Nullable<bool> IsPublished { get; set; }
+        public string Flags { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
-        public virtual Province Province { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Recruitment> Recruitments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ward> Wards { get; set; }
+        public virtual ICollection<Province> Provinces { get; set; }
     }
 }

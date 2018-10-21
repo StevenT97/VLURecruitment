@@ -12,7 +12,7 @@ namespace VLURecruit.Controllers
         public ActionResult Index()
         {
             EJobEntities db = new EJobEntities();
-            var model = db.Recruitments.Where(x => x.Status_id==2).ToList();
+            var model = db.Recruitments.Where(x => x.Status_id==2 && x.Is_Show==true).ToList();
             ViewBag.count = model.Count();
             return View(model);
         }

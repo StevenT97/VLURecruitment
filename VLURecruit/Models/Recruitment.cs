@@ -39,6 +39,7 @@ namespace VLURecruit.Models
         public string Required_Skills { get; set; }
         public string Job_Benefits { get; set; }
         public string Job_Optional { get; set; }
+        public bool Is_Show { get; set; }
     
         public virtual Company_Info Company_Info { get; set; }
         public virtual District District { get; set; }

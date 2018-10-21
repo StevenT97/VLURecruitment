@@ -34,5 +34,22 @@ namespace VLURecruit.Areas.Staff.Controllers
             var model = db.Recruitments.Where(x => x.Status_id == 2).ToList();
             return View(model);
         }
+
+
+        //ham an-hien tin tuyen dung sau khi da duyet
+        public ActionResult Show_Hide(int id)
+        {
+            var item = db.Recruitments.Find(id);
+            if (item.Is_Show == true)
+            {
+                item.Is_Show = false;
+            }
+            else
+            {
+                item.Is_Show = true;
+            }
+            db.SaveChanges();
+            return RedirectToAction("List", "Recruitment", new { area = "Staff" });
+        }
     }
 }

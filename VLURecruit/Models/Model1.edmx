@@ -72,21 +72,89 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name_Company" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Introduce_Company" Type="nvarchar" MaxLength="200" />
+          <Property Name="Contact_Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Contact_Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Introduce_Company" Type="nvarchar" MaxLength="500" />
           <Property Name="website_Company" Type="varchar" MaxLength="50" />
-          <Property Name="Logo_Comany" Type="varchar" MaxLength="50" />
-          <Property Name="Field_Company" Type="nvarchar" MaxLength="50" />
+          <Property Name="Province_ID" Type="int" Nullable="false" />
+          <Property Name="Field_Company" Type="nvarchar" MaxLength="100" />
           <Property Name="Created_at" Type="datetime" Nullable="false" />
           <Property Name="Update_at" Type="datetime" />
           <Property Name="Slug_Company" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Is_hot_Company" Type="int" />
+        </EntityType>
+        <EntityType Name="Company_Logos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="date_Created" Type="datetime" Nullable="false" />
+          <Property Name="date_Updated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Company_Photos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Company_ID" Type="int" Nullable="false" />
+          <Property Name="date_Created" Type="datetime" Nullable="false" />
+          <Property Name="date_Updated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CommonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FormalName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryType" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountrySubType" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sovereignty" Type="nvarchar" MaxLength="100" />
+          <Property Name="Capital" Type="nvarchar" MaxLength="100" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="TelephoneCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryCode3" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="InternetCountryCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="Flags" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Districts">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="District_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="District_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="LatiLongTude" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="TelephoneCode" Type="int" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="2" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Recruitments">
           <Key>
@@ -111,6 +179,7 @@
           <Property Name="Required_Skills" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Job_Benefits" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Job_Optional" Type="nvarchar(max)" />
+          <Property Name="Is_Show" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Staff_Info">
           <Key>
@@ -155,16 +224,6 @@
           <Property Name="Status_Id" Type="int" Nullable="false" />
           <Property Name="Account_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Tags">
           <Key>
             <PropertyRef Name="Id" />
@@ -192,6 +251,55 @@
           <Property Name="Company_id" Type="int" Nullable="false" />
           <Property Name="Status_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Wards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="LatiLongTude" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistrictID" Type="int" Nullable="false" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Company_Info_Provinces">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="1" />
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company_Info">
+              <PropertyRef Name="Province_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Logos_Company_Info">
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="1" />
+          <End Role="Company_Logos" Type="Self.Company_Logos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company_Info">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company_Logos">
+              <PropertyRef Name="Company_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Photos_Company_Info">
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="1" />
+          <End Role="Company_Photos" Type="Self.Company_Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company_Info">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company_Photos">
+              <PropertyRef Name="Company_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -248,6 +356,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_District_Province">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="1" />
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Province_Country">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provinces">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Recruitments_Company_Info">
           <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="1" />
           <End Role="Recruitments" Type="Self.Recruitments" Multiplicity="*" />
@@ -260,7 +394,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Recruitments_Districts">
+        <Association Name="FK_Recruitments_District_Fulls">
           <End Role="Districts" Type="Self.Districts" Multiplicity="1" />
           <End Role="Recruitments" Type="Self.Recruitments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -392,6 +526,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Ward_District">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="1" />
+          <End Role="Wards" Type="Self.Wards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wards">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="EJobModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -400,16 +546,32 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Company_Info" EntityType="Self.Company_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company_Logos" EntityType="Self.Company_Logos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company_Photos" EntityType="Self.Company_Photos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recruitments" EntityType="Self.Recruitments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff_Info" EntityType="Self.Staff_Info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status_Account" EntityType="Self.Status_Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status_Recruitment" EntityType="Self.Status_Recruitment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student_Info" EntityType="Self.Student_Info" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tags_Recruitments" EntityType="Self.Tags_Recruitments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User_In_Company" EntityType="Self.User_In_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wards" EntityType="Self.Wards" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Company_Info_Provinces" Association="Self.FK_Company_Info_Provinces">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Company_Info" EntitySet="Company_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Logos_Company_Info" Association="Self.FK_Company_Logos_Company_Info">
+            <End Role="Company_Info" EntitySet="Company_Info" />
+            <End Role="Company_Logos" EntitySet="Company_Logos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Photos_Company_Info" Association="Self.FK_Company_Photos_Company_Info">
+            <End Role="Company_Info" EntitySet="Company_Info" />
+            <End Role="Company_Photos" EntitySet="Company_Photos" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -426,11 +588,19 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
+          <AssociationSet Name="FK_District_Province" Association="Self.FK_District_Province">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Province_Country" Association="Self.FK_Province_Country">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Provinces" EntitySet="Provinces" />
+          </AssociationSet>
           <AssociationSet Name="FK_Recruitments_Company_Info" Association="Self.FK_Recruitments_Company_Info">
             <End Role="Company_Info" EntitySet="Company_Info" />
             <End Role="Recruitments" EntitySet="Recruitments" />
           </AssociationSet>
-          <AssociationSet Name="FK_Recruitments_Districts" Association="Self.FK_Recruitments_Districts">
+          <AssociationSet Name="FK_Recruitments_District_Fulls" Association="Self.FK_Recruitments_District_Fulls">
             <End Role="Districts" EntitySet="Districts" />
             <End Role="Recruitments" EntitySet="Recruitments" />
           </AssociationSet>
@@ -473,6 +643,10 @@
           <AssociationSet Name="FK_User_In_Company_Status_Account" Association="Self.FK_User_In_Company_Status_Account">
             <End Role="Status_Account" EntitySet="Status_Account" />
             <End Role="User_In_Company" EntitySet="User_In_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ward_District" Association="Self.FK_Ward_District">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Wards" EntitySet="Wards" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -548,24 +722,103 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Introduce_Company" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Introduce_Company" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="website_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Logo_Comany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Field_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province_ID" Type="Int32" Nullable="false" />
+          <Property Name="Field_Company" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Update_at" Type="DateTime" Precision="3" />
           <Property Name="Slug_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Is_hot_Company" Type="Int32" />
+          <NavigationProperty Name="Province" Relationship="Self.FK_Company_Info_Provinces" FromRole="Company_Info" ToRole="Provinces" />
+          <NavigationProperty Name="Company_Logos" Relationship="Self.FK_Company_Logos_Company_Info" FromRole="Company_Info" ToRole="Company_Logos" />
+          <NavigationProperty Name="Company_Photos" Relationship="Self.FK_Company_Photos_Company_Info" FromRole="Company_Info" ToRole="Company_Photos" />
           <NavigationProperty Name="Recruitments" Relationship="Self.FK_Recruitments_Company_Info" FromRole="Company_Info" ToRole="Recruitments" />
           <NavigationProperty Name="User_In_Company" Relationship="Self.FK_User_In_Company_Company_Info" FromRole="Company_Info" ToRole="User_In_Company" />
+        </EntityType>
+        <EntityType Name="Company_Logos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="date_Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_Updated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Company_Info" Relationship="Self.FK_Company_Logos_Company_Info" FromRole="Company_Logos" ToRole="Company_Info" />
+        </EntityType>
+        <EntityType Name="Company_Photos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Company_ID" Type="Int32" Nullable="false" />
+          <Property Name="date_Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_Updated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Company_Info" Relationship="Self.FK_Company_Photos_Company_Info" FromRole="Company_Photos" ToRole="Company_Info" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FormalName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountrySubType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sovereignty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Capital" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InternetCountryCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="Flags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Provinces" Relationship="Self.FK_Province_Country" FromRole="Countries" ToRole="Provinces" />
         </EntityType>
         <EntityType Name="District">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="District_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Recruitments" Relationship="Self.FK_Recruitments_Districts" FromRole="Districts" ToRole="Recruitments" />
+          <Property Name="District_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LatiLongTude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Province" Relationship="Self.FK_District_Province" FromRole="Districts" ToRole="Provinces" />
+          <NavigationProperty Name="Recruitments" Relationship="Self.FK_Recruitments_District_Fulls" FromRole="Districts" ToRole="Recruitments" />
+          <NavigationProperty Name="Wards" Relationship="Self.FK_Ward_District" FromRole="Districts" ToRole="Wards" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneCode" Type="Int32" />
+          <Property Name="ZipCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Company_Info" Relationship="Self.FK_Company_Info_Provinces" FromRole="Provinces" ToRole="Company_Info" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Province_Country" FromRole="Provinces" ToRole="Countries" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK_District_Province" FromRole="Provinces" ToRole="Districts" />
         </EntityType>
         <EntityType Name="Recruitment">
           <Key>
@@ -590,8 +843,9 @@
           <Property Name="Required_Skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Job_Benefits" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Job_Optional" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Is_Show" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Company_Info" Relationship="Self.FK_Recruitments_Company_Info" FromRole="Recruitments" ToRole="Company_Info" />
-          <NavigationProperty Name="District" Relationship="Self.FK_Recruitments_Districts" FromRole="Recruitments" ToRole="Districts" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Recruitments_District_Fulls" FromRole="Recruitments" ToRole="Districts" />
           <NavigationProperty Name="Status_Recruitment" Relationship="Self.FK_Recruitments_Status_Recruitment" FromRole="Recruitments" ToRole="Status_Recruitment" />
           <NavigationProperty Name="Tags_Recruitments" Relationship="Self.FK_Tags_Recruitments_Recruitments" FromRole="Recruitments" ToRole="Tags_Recruitments" />
         </EntityType>
@@ -646,16 +900,6 @@
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Student_Info_AspNetUsers" FromRole="Student_Info" ToRole="AspNetUsers" />
           <NavigationProperty Name="Status_Account" Relationship="Self.FK_Student_Info_Status_Account" FromRole="Student_Info" ToRole="Status_Account" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Tag">
           <Key>
             <PropertyRef Name="Id" />
@@ -688,6 +932,20 @@
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_User_In_Company_AspNetUsers" FromRole="User_In_Company" ToRole="AspNetUsers" />
           <NavigationProperty Name="Company_Info" Relationship="Self.FK_User_In_Company_Company_Info" FromRole="User_In_Company" ToRole="Company_Info" />
           <NavigationProperty Name="Status_Account" Relationship="Self.FK_User_In_Company_Status_Account" FromRole="User_In_Company" ToRole="Status_Account" />
+        </EntityType>
+        <EntityType Name="Ward">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LatiLongTude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictID" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Ward_District" FromRole="Wards" ToRole="Districts" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -753,6 +1011,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Company_Info_Provinces">
+          <End Role="Provinces" Type="Self.Province" Multiplicity="1" />
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company_Info">
+              <PropertyRef Name="Province_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Logos_Company_Info">
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="1" />
+          <End Role="Company_Logos" Type="Self.Company_Logos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company_Info">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company_Logos">
+              <PropertyRef Name="Company_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Photos_Company_Info">
+          <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="1" />
+          <End Role="Company_Photos" Type="Self.Company_Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company_Info">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company_Photos">
+              <PropertyRef Name="Company_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Recruitments_Company_Info">
           <End Role="Company_Info" Type="Self.Company_Info" Multiplicity="1" />
           <End Role="Recruitments" Type="Self.Recruitment" Multiplicity="*" />
@@ -777,7 +1071,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Recruitments_Districts">
+        <Association Name="FK_Province_Country">
+          <End Role="Countries" Type="Self.Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Provinces" Type="Self.Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provinces">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_District_Province">
+          <End Role="Provinces" Type="Self.Province" Multiplicity="1" />
+          <End Role="Districts" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recruitments_District_Fulls">
           <End Role="Districts" Type="Self.District" Multiplicity="1" />
           <End Role="Recruitments" Type="Self.Recruitment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -786,6 +1106,18 @@
             </Principal>
             <Dependent Role="Recruitments">
               <PropertyRef Name="Districts_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ward_District">
+          <End Role="Districts" Type="Self.District" Multiplicity="1" />
+          <End Role="Wards" Type="Self.Ward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wards">
+              <PropertyRef Name="DistrictID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -872,16 +1204,20 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="Company_Info" EntityType="Self.Company_Info" />
+          <EntitySet Name="Company_Logos" EntityType="Self.Company_Logos" />
+          <EntitySet Name="Company_Photos" EntityType="Self.Company_Photos" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
           <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Provinces" EntityType="Self.Province" />
           <EntitySet Name="Recruitments" EntityType="Self.Recruitment" />
           <EntitySet Name="Staff_Info" EntityType="Self.Staff_Info" />
           <EntitySet Name="Status_Account" EntityType="Self.Status_Account" />
           <EntitySet Name="Status_Recruitment" EntityType="Self.Status_Recruitment" />
           <EntitySet Name="Student_Info" EntityType="Self.Student_Info" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Tags" EntityType="Self.Tag" />
           <EntitySet Name="Tags_Recruitments" EntityType="Self.Tags_Recruitments" />
           <EntitySet Name="User_In_Company" EntityType="Self.User_In_Company" />
+          <EntitySet Name="Wards" EntityType="Self.Ward" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -902,6 +1238,18 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="User_In_Company" EntitySet="User_In_Company" />
           </AssociationSet>
+          <AssociationSet Name="FK_Company_Info_Provinces" Association="Self.FK_Company_Info_Provinces">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Company_Info" EntitySet="Company_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Logos_Company_Info" Association="Self.FK_Company_Logos_Company_Info">
+            <End Role="Company_Info" EntitySet="Company_Info" />
+            <End Role="Company_Logos" EntitySet="Company_Logos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Photos_Company_Info" Association="Self.FK_Company_Photos_Company_Info">
+            <End Role="Company_Info" EntitySet="Company_Info" />
+            <End Role="Company_Photos" EntitySet="Company_Photos" />
+          </AssociationSet>
           <AssociationSet Name="FK_Recruitments_Company_Info" Association="Self.FK_Recruitments_Company_Info">
             <End Role="Company_Info" EntitySet="Company_Info" />
             <End Role="Recruitments" EntitySet="Recruitments" />
@@ -910,9 +1258,21 @@
             <End Role="Company_Info" EntitySet="Company_Info" />
             <End Role="User_In_Company" EntitySet="User_In_Company" />
           </AssociationSet>
-          <AssociationSet Name="FK_Recruitments_Districts" Association="Self.FK_Recruitments_Districts">
+          <AssociationSet Name="FK_Province_Country" Association="Self.FK_Province_Country">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Provinces" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_Province" Association="Self.FK_District_Province">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recruitments_District_Fulls" Association="Self.FK_Recruitments_District_Fulls">
             <End Role="Districts" EntitySet="Districts" />
             <End Role="Recruitments" EntitySet="Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ward_District" Association="Self.FK_Ward_District">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Wards" EntitySet="Wards" />
           </AssociationSet>
           <AssociationSet Name="FK_Recruitments_Status_Recruitment" Association="Self.FK_Recruitments_Status_Recruitment">
             <End Role="Status_Recruitment" EntitySet="Status_Recruitment" />
@@ -1009,9 +1369,11 @@
               <MappingFragment StoreEntitySet="Company_Info">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name_Company" ColumnName="Name_Company" />
+                <ScalarProperty Name="Contact_Email" ColumnName="Contact_Email" />
+                <ScalarProperty Name="Contact_Phone" ColumnName="Contact_Phone" />
                 <ScalarProperty Name="Introduce_Company" ColumnName="Introduce_Company" />
                 <ScalarProperty Name="website_Company" ColumnName="website_Company" />
-                <ScalarProperty Name="Logo_Comany" ColumnName="Logo_Comany" />
+                <ScalarProperty Name="Province_ID" ColumnName="Province_ID" />
                 <ScalarProperty Name="Field_Company" ColumnName="Field_Company" />
                 <ScalarProperty Name="Created_at" ColumnName="Created_at" />
                 <ScalarProperty Name="Update_at" ColumnName="Update_at" />
@@ -1020,11 +1382,81 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Company_Logos">
+            <EntityTypeMapping TypeName="EJobModel.Company_Logos">
+              <MappingFragment StoreEntitySet="Company_Logos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Image_Name" ColumnName="Image_Name" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="date_Created" ColumnName="date_Created" />
+                <ScalarProperty Name="date_Updated" ColumnName="date_Updated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company_Photos">
+            <EntityTypeMapping TypeName="EJobModel.Company_Photos">
+              <MappingFragment StoreEntitySet="Company_Photos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Image_Name" ColumnName="Image_Name" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="date_Created" ColumnName="date_Created" />
+                <ScalarProperty Name="date_Updated" ColumnName="date_Updated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="EJobModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CommonName" ColumnName="CommonName" />
+                <ScalarProperty Name="FormalName" ColumnName="FormalName" />
+                <ScalarProperty Name="CountryType" ColumnName="CountryType" />
+                <ScalarProperty Name="CountrySubType" ColumnName="CountrySubType" />
+                <ScalarProperty Name="Sovereignty" ColumnName="Sovereignty" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+                <ScalarProperty Name="CountryCode3" ColumnName="CountryCode3" />
+                <ScalarProperty Name="CountryNumber" ColumnName="CountryNumber" />
+                <ScalarProperty Name="InternetCountryCode" ColumnName="InternetCountryCode" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="Flags" ColumnName="Flags" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Districts">
             <EntityTypeMapping TypeName="EJobModel.District">
               <MappingFragment StoreEntitySet="Districts">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="District_Name" ColumnName="District_Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="EJobModel.Province">
+              <MappingFragment StoreEntitySet="Provinces">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1050,6 +1482,7 @@
                 <ScalarProperty Name="Required_Skills" ColumnName="Required_Skills" />
                 <ScalarProperty Name="Job_Benefits" ColumnName="Job_Benefits" />
                 <ScalarProperty Name="Job_Optional" ColumnName="Job_Optional" />
+                <ScalarProperty Name="Is_Show" ColumnName="Is_Show" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1100,17 +1533,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="EJobModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tags">
             <EntityTypeMapping TypeName="EJobModel.Tag">
               <MappingFragment StoreEntitySet="Tags">
@@ -1136,6 +1558,20 @@
                 <ScalarProperty Name="Account_id" ColumnName="Account_id" />
                 <ScalarProperty Name="Company_id" ColumnName="Company_id" />
                 <ScalarProperty Name="Status_id" ColumnName="Status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wards">
+            <EntityTypeMapping TypeName="EJobModel.Ward">
+              <MappingFragment StoreEntitySet="Wards">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

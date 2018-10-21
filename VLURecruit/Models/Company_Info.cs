@@ -17,21 +17,30 @@ namespace VLURecruit.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Company_Info()
         {
+            this.Company_Logos = new HashSet<Company_Logos>();
+            this.Company_Photos = new HashSet<Company_Photos>();
             this.Recruitments = new HashSet<Recruitment>();
             this.User_In_Company = new HashSet<User_In_Company>();
         }
     
         public int Id { get; set; }
         public string Name_Company { get; set; }
+        public string Contact_Email { get; set; }
+        public string Contact_Phone { get; set; }
         public string Introduce_Company { get; set; }
         public string website_Company { get; set; }
-        public string Logo_Comany { get; set; }
+        public int Province_ID { get; set; }
         public string Field_Company { get; set; }
         public System.DateTime Created_at { get; set; }
         public Nullable<System.DateTime> Update_at { get; set; }
         public string Slug_Company { get; set; }
         public Nullable<int> Is_hot_Company { get; set; }
     
+        public virtual Province Province { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Company_Logos> Company_Logos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Company_Photos> Company_Photos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recruitment> Recruitments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

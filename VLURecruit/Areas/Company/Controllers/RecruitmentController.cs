@@ -43,6 +43,7 @@ namespace VLURecruit.Areas.Company.Controllers
             {
 
                 Company_id = data.Company_id,
+                Is_Show=true,
                 Nums_view = 0,
                 Status_id = 1,
                 Districts_id = data.Districts_id,
@@ -83,5 +84,6 @@ namespace VLURecruit.Areas.Company.Controllers
 
             return RedirectToAction("Index", "Home", new { area = "Company" });
         }
+
     }
 }
