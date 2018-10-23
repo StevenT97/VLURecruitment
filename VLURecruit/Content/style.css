@@ -47,17 +47,19 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,500i,600,600i,700,700i,800,900|Roboto:300,400,700");
 html,
 body {
-  font-size: 14px;
-  color: #595959;
-  font-family: "Montserrat", sans-serif;
-  vertical-align: baseline;
-  line-height: 26px;
-  font-weight: 400;
+    font-size: 14px;
+    color: #595959;
+    font-family: "Montserrat", sans-serif;
+    vertical-align: baseline;
+    line-height: 26px;
+    font-weight: 400;
+    background-color:#b8b8b8;
 }
 
 /* ....................................
 1.1 Reset CSS 
 .......................................*/
+
 a {
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -7275,4 +7277,29 @@ footer .footer-top .foo_link ul li:last-child {
 .company_register .companies .slick-arrow.slick-next::after, .company_register .companies .slick-arrow.slick-prev::after{
   line-height:37px;
 }
+}
+div.reload{
+    font-size: 14px;
+    color: #595959;
+    font-family: "Montserrat", sans-serif;
+    vertical-align: baseline;
+    line-height: 26px;
+    font-weight: 400;
+    background:white;
+    padding-top: 20px;
+    padding-bottom: 1px;
+    margin-left: 170px;
+    margin-right: 170px;
+    box-shadow:5px 5px #009688;
+    outline: none;
+   
+}
+div.create {
+    padding-right: 20px;
+}
+div.opaciticle{
+    opacity: 1;
+}
+div.shadow{
+    box-shadow: 1px 1px #c8c8c8;
 }
