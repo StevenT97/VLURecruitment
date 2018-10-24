@@ -1,4 +1,5 @@
-﻿<header id="sticky"style="position:inherit">
+﻿@using Microsoft.AspNet.Identity
+<header id="sticky"style="position:inherit">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-4" style="background-color:black">
@@ -11,9 +12,9 @@
                 <div class="main-menu">
                     <nav>
                         <ul>
-                            <li><a class="active" href="index.html">Trang chủ</a></li>
+                            <li><a class="active" href="@Url.Action("Index","Home",new { area=""})">Trang chủ</a></li>
 
-                            <li>
+                            @*<li>
                                 <a href="javascript:void(0)">Công ty</a>
                                 <ul>
                                     <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/recruiters.html">Danh sách Công ty</a></li>
@@ -28,9 +29,29 @@
                                 <a href="http://webdevproof.com/theme-forest-demo/job/demo1/blog.html">Giới Thiệu</a>
 
                             </li>
-                            <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/contact.html">Liên Hệ</a></li>
-                            <li class="users"><button type="button" class="sign_up" data-toggle="modal" data-target="#exampleModalCenter"><i class="flaticon-add-user"></i>Đăng Ký</button></li>
-                            <li class="users"><a href="@Url.Action("Login","Account",new { area=""})" type="button" class="log_in" data-toggle="" data-target="#exampleModalCenter"><i class="flaticon-login"></i>Đăng Nhập</a></li>
+                            <li><a href="http://webdevproof.com/theme-forest-demo/job/demo1/contact.html">Liên Hệ</a></li>*@
+
+                            <li>
+                            @if (Request.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("LogOff", "Account", new { area=""},FormMethod.Post, new { id = "logoutForm", @class = "log-in" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                        <li class="users">
+                                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                        </li>
+                                        <li class="users"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+                                }
+                            }
+                            else
+                            {
+
+                                <li class="users"><button type="button" class="sign_up" data-toggle="modal" data-target="#exampleModalCenter"><i class="flaticon-add-user"></i>Đăng Ký</button></li>
+                                <li class="users"><a href="@Url.Action("Login","Account",new { area=""})" type="button" class="log_in" data-toggle="" data-target="#exampleModalCenter"><i class="flaticon-login"></i>Đăng Nhập</a></li>
+                            }
+                            </li>
                         </ul>
                     </nav>
                 </div>

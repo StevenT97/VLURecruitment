@@ -127,7 +127,7 @@
                                                 <div class="epi-sec">
                                                     <ul class="descp">
                                                         <li><span>@item.District.Province.Name</span></li>
-                                                        <li><span>@item.District.District_Name</span></li>
+                                                        <li><span>Quận @item.District.District_Name</span></li>
                                                         <li><span data-utcdate="@item.Updated_date.Value.ToString("s")"></span></li>
                                                         <br>
 
@@ -225,7 +225,7 @@
 
                                                     </div>
                                                     <div class="hr-rate">
-                                                        <span>Up to @item.Salary_to</span>
+                                                        <span style="font-size:10px;color:gray;font-weight:bold">Up to @item.Salary_to</span>
                                                     </div>
                                                 </div>
                                             }
@@ -299,13 +299,14 @@
             var text = $(this).text();
             if ($(this).text().length > 500)
             {
-                var html = $(this).html().substr(0, 450) + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + $(this).text().substr(450, $(this).html().length) + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-
+                var html = $(this).text().substr(0, 450) + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + $(this).text().substr(450, $(this).text().length) + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+                
                 $(this).html(html);
             }
             else
             {
-                $(this).html(text);
+                $(this).html($(this).text());
+
             }
 
         })

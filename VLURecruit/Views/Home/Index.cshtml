@@ -77,7 +77,7 @@
 </section>
 <!--Job searcing area End here-->
 <!--Categories area start here-->
-<div class="categories-area">
+@*<div class="categories-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -154,7 +154,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <!--Categories area End here-->
 <!--Features jobs area start here-->
 <section class="featured-jobs section">
@@ -174,7 +174,7 @@
                         @foreach (var item in Model)
                         {
                             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="items">
+                                <div class="items" style="height:300px">
                                     <div class="right-con">
                                         <figure><img src="~/Assets/icon/12.png" alt=""></figure>
                                         @if (item.Is_Part_Time == true)
@@ -197,8 +197,17 @@
                                         <p data-utcdate="@item.Updated_date.Value.ToString("s")"></p>
                                             <ul>
                                                 <li><span class="ico"><i class="flaticon-briefcase-frontal-view"></i></span><span class="con">@item.Company_Info.Name_Company</span></li>
-                                                <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">@item.Salary_from VND</span></li>
-                                                <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">@item.District.District_Name</span></li>
+                                                @if (item.Salary_from == null && item.Salary_to == null)
+                                                {
+                                                    <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">Luương Thỏa Thuận</span></li>
+
+                                                }
+                                                else
+                                                {
+                                                    <li><span class="ico"><i class="flaticon-money-bag-with-dollar-symbol"></i></span><span class="con">@item.Salary_from ~ @item.Salary_to VND</span></li>
+
+                                                }
+                                                <li><span class="ico"><i class="flaticon-maps-and-flags"></i></span><span class="con">Quận @item.District.District_Name</span></li>
                                             </ul>
                                         
                                     </div>
@@ -229,7 +238,7 @@
 </section>*@
 <!--Banner area End here-->
 <!--Company register area start here-->
-<section class="company_register section">
+@*<section class="company_register section">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
@@ -501,10 +510,10 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 <!--Company register area End here-->
 <!--Banner area start here-->
-<section class="banner-area2">
+@*<section class="banner-area2">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12 col-12 pd-0">
@@ -529,7 +538,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 <!--Banner area End here-->
 <!--Testimonial area start here-->
 @*<section class="testimonial-area section">
@@ -697,25 +706,25 @@
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="counter-list">
-                    <h2><span class="counter-anim">5890</span> +</h2>
+                    <h2><span class="counter-anim">@ViewBag.count</span> +</h2>
                     <p>Jobs Available</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="counter-list">
-                    <h2><span class="counter-anim">2554</span> +</h2>
+                    <h2><span class="counter-anim">@ViewBag.mem</span> +</h2>
                     <p>Members</p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            @*<div class="col-md-3 col-sm-6">
                 <div class="counter-list">
                     <h2><span class="counter-anim">5142</span> +</h2>
                     <p>Resumes</p>
                 </div>
-            </div>
+            </div>*@
             <div class="col-md-3 col-sm-6">
                 <div class="counter-list">
-                    <h2><span class="counter-anim">1420</span> +</h2>
+                    <h2><span class="counter-anim">@ViewBag.com</span> +</h2>
                     <p>Company</p>
                 </div>
             </div>
@@ -837,7 +846,7 @@
 </section>*@
 <!--Apps area End here-->
 <!--Subscribe area start here-->
-<section class="subscribe-area">
+@*<section class="subscribe-area">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
@@ -862,7 +871,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 
 @section scripts
     {

@@ -13,6 +13,10 @@ namespace VLURecruit.Controllers
         {
             EJobEntities db = new EJobEntities();
             var model = db.Recruitments.Where(x => x.Status_id==2 && x.Is_Show==true).ToList();
+            var num_member = db.Student_Info.Where(x => x.Status_Id==1).Count();
+            var num_company = db.Company_Info.ToList().Count();
+            ViewBag.com = num_company;
+            ViewBag.mem = num_member;
             ViewBag.count = model.Count();
             return View(model);
         }
