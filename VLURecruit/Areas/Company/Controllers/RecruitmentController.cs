@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 
 namespace VLURecruit.Areas.Company.Controllers
 {
+    [Authorize(Roles ="Company")]
     public class RecruitmentController : Controller
     {
         EJobEntities db = new EJobEntities();

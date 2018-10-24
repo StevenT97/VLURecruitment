@@ -59,7 +59,7 @@
                                                 </div>
                                             </div><!--username-dt end-->
                                             <div class="user-specs">
-                                                <h3>ViewBag.Name</h3>
+                                                <h3>@ViewBag.Name</h3>
 
                                             </div>
                                         </div><!--user-profile end-->
@@ -126,7 +126,7 @@
                                                 </div>
                                                 <div class="epi-sec">
                                                     <ul class="descp">
-                                                        <li><span>Ho Chi Minh</span></li>
+                                                        <li><span>@item.District.Province.Name</span></li>
                                                         <li><span>@item.District.District_Name</span></li>
                                                         <li><span data-utcdate="@item.Updated_date.Value.ToString("s")"></span></li>
                                                         <br>
@@ -152,8 +152,16 @@
                                                         {
                                                             <li><a href="#" title="">Intership</a></li>
                                                         }
-
-                                                        <li><span>@item.Salary_from ~ @item.Salary_to VND</span></li>
+                                                        <!--Salary-->
+                                                        @if (item.Salary_from == null && item.Salary_to == null)
+                                                        {
+                                                            <li><span>Lương Thỏa Thuận</span></li>
+                                                        }
+                                                        else
+                                                        {
+                                                            <li><span>@item.Salary_from ~ @item.Salary_to VND</span></li>
+                                                        }
+                                                        
                                                     </ul>
 
                                                     <div class="more">
@@ -282,7 +290,6 @@
 <script>
     $(document).ready(function () {
         // Configure/customize these variables.
-        var showChar = 500;  // How many characters are shown by default
         var ellipsestext = "...";
         var moretext = "Show more >";
         var lesstext = "Show less";

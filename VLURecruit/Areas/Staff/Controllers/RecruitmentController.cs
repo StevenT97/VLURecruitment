@@ -7,6 +7,7 @@ using VLURecruit.Models;
 
 namespace VLURecruit.Areas.Staff.Controllers
 {
+    [Authorize(Roles = "Staff")]
     public class RecruitmentController : Controller
     {
         EJobEntities db = new EJobEntities();

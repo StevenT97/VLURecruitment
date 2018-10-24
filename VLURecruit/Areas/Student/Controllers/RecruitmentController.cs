@@ -8,6 +8,7 @@ using VLURecruit.Models;
 
 namespace VLURecruit.Areas.Student.Controllers
 {
+    [Authorize(Roles ="Student")]
     public class RecruitmentController : Controller
     {
         EJobEntities model = new EJobEntities();
@@ -18,8 +19,10 @@ namespace VLURecruit.Areas.Student.Controllers
             var day = DateTime.Now;
             List<object> list = new List<object>();
             var recruitment = model.Recruitments.ToList().Where(x => x.Expire_date >= day && x.Status_id==2 && x.Is_Show==true).OrderByDescending(x => x.Id);
-            //var userId = User.Identity.GetUserId();
-            //ViewBag.Name = model.Student_Info.FirstOrDefault(x => x.Account_Id == userId).Student_Name;
+            //get student name
+            var userId = User.Identity.GetUserId();
+            var name = model.Student_Info.FirstOrDefault(x => x.Account_Id == userId).Student_Name.Split('@');
+            ViewBag.Name = name[0];
             return View(recruitment);
         }
     }

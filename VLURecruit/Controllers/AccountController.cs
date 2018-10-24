@@ -99,7 +99,7 @@ namespace VLURecruit.Controllers
                     //check user role staff
                     else if (await UserManager.IsInRoleAsync(user.Id, "Company"))
                     {
-                        return RedirectToAction("Index", "Home", new { area = "Company" });
+                        return RedirectToAction("Create", "Recruitment", new { area = "Company" });
                     }
                     //check user role staff
                     else if (await UserManager.IsInRoleAsync(user.Id, "Staff"))
@@ -107,13 +107,6 @@ namespace VLURecruit.Controllers
                         return RedirectToAction("Index", "Home", new { area = "Staff" });
                     }
                     //check user role stident
-                    if (await UserManager.IsInRoleAsync(user.Id, "Student"))
-                    {
-                        Student_Info StuInfo = new Student_Info();
-                        var StudentName = StuInfo.Student_Name;
-                        Session["StudentNa"] = StudentName;
-                        return RedirectToAction("ListOfRecruitment", "Recruitment", new { area = "Student" });
-                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -365,9 +358,17 @@ namespace VLURecruit.Controllers
 
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+            //get info user login
+            var user = await UserManager.FindByNameAsync(loginInfo.Email);
             switch (result)
             {
                 case SignInStatus.Success:
+                    //check user role stident
+                    if (await UserManager.IsInRoleAsync(user.Id, "Student"))
+                    {
+                        Student_Info StuInfo = new Student_Info();
+                        return RedirectToAction("ListOfRecruitment", "Recruitment", new { area = "Student" });
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
