@@ -171,10 +171,10 @@
             <div class="jobs">
                 <div class="jobs_items">
                     <div class="row">
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Take(4))
                         {
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="items" style="height:300px">
+                            <div class="col-lg-3 col-4-12 col-sm-12 col-12">
+                                <div class="items" style="height:400px;width:350px;">
                                     <div class="right-con">
                                         <figure><img src="~/Assets/icon/12.png" alt=""></figure>
                                         @if (item.Is_Part_Time == true)
@@ -214,6 +214,9 @@
                                 </div>
                             </div>
                         }
+                    </div>
+                    <div class="btnXemThem" style="text-align:center">
+                            <button href="#" class="btn btn-lg hvr-bounce-to-top "style="color:black;font-weight:200;background-color:white;border;border: 1px solid #0097a2;">Xem thêm</button>
                     </div>
                 </div>
             </div>

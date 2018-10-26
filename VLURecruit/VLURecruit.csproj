@@ -337,6 +337,7 @@
     <Content Include="Content\CSS_Summernote\summernote.css" />
     <Content Include="Content\flaticon.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\hover-min.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery.bxslider.css" />
     <Content Include="Content\magnific-popup.css" />

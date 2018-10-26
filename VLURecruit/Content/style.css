@@ -5555,6 +5555,7 @@ header .main-menu nav ul li.users button{
 .featured-jobs {
   overflow: hidden;
   vertical-align: middle;  
+  background-color:white;
 }
 .featured-jobs .jobs_area {
   overflow: hidden;
@@ -5575,21 +5576,21 @@ header .main-menu nav ul li.users button{
   }
 }
 .featured-jobs .jobs .slick-list {
-  transform: rotate(-90deg) !important;
+  /*transform: rotate(-90deg) !important;*/
   overflow: visible;
 }
 @media only screen and (max-width: 992px) {
   .featured-jobs .jobs .slick-list {
-    transform: rotate(0deg) !important;
+    ;
     overflow: hidden;
   }
 }
 .featured-jobs .jobs .jobs_items {
-  transform: rotate(90deg) !important;
+  
 }
 @media only screen and (max-width: 992px) {
   .featured-jobs .jobs .jobs_items {
-    transform: rotate(0deg) !important;
+    
   }
 }
 .featured-jobs .jobs .jobs_items:focus {
